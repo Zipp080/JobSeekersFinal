@@ -13,7 +13,7 @@ namespace JobSeekersFinal.Controllers
             return View();
         }
 
-        public ActionResult Main()
+        public ActionResult FrontDash()
         {
             return View();
         }
