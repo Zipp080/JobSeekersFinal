@@ -90,10 +90,10 @@
                     </div>
                 </div>
                 <h2 class="sub-header">Applicants</h2>
-                <div class="table-responsive">
+                <div ng-controller="mainController">
                     <table class="table table-striped">
                         <thead>
-                            <tr>
+                            <tr ng-repeat="applicant in applicants">
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Title</th>
@@ -103,7 +103,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Eric</td>
+                                <td>{{applicants.FirstName}}</td>
                                 <td>Thibeau</td>
                                 <td>Project Manager</td>
                                 <td>Laguna Niguel</td>
