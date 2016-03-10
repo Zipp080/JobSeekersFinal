@@ -260,11 +260,6 @@
     <Content Include="Scripts\view.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Home\FrontDash.cshtml" />
-    <Content Include="Views\Applicants\Create.cshtml" />
-    <Content Include="Views\Applicants\Delete.cshtml" />
-    <Content Include="Views\Applicants\Details.cshtml" />
-    <Content Include="Views\Applicants\Edit.cshtml" />
-    <Content Include="Views\Applicants\Index.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\Dash.cshtml" />
     <Content Include="Web.config" />
