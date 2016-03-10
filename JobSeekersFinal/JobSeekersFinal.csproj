@@ -198,62 +198,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ApplicantsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ANSWER.cs">
-      <DependentUpon>ApplicantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ANSWERSCORE.cs">
-      <DependentUpon>ApplicantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\APPLICANT.cs">
-      <DependentUpon>ApplicantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\APPLICANTSANSWER.cs">
-      <DependentUpon>ApplicantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ApplicantsModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ApplicantsModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ApplicantsModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ApplicantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ApplicantsModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ApplicantsModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CATEGORY.cs">
-      <DependentUpon>ApplicantsModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\QUESTION.cs">
-      <DependentUpon>ApplicantsModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SeekersDB.mdf" />
-    <Content Include="App_Data\SeekersDB_log.ldf">
-      <DependentUpon>SeekersDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dashboard.css" />
-    <Content Include="Content\iepngfix.htc" />
     <Content Include="Content\landing-page.css" />
-    <Content Include="Content\view.css" />
+    <Content Include="Content\Signup.css" />
+    <Content Include="Content\NewApplicant.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -271,36 +233,19 @@
     <Content Include="img\shadow.gif" />
     <Content Include="img\soft-skills.jpg" />
     <Content Include="img\top.png" />
-    <Content Include="Models\ApplicantsModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ApplicantsModel.edmx</DependentUpon>
-      <LastGenOutput>ApplicantsModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ApplicantsModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ApplicantsModel.edmx</DependentUpon>
-      <LastGenOutput>ApplicantsModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\ApplicantsModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ApplicantsModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ApplicantsModel.edmx.diagram">
-      <DependentUpon>ApplicantsModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -320,7 +265,6 @@
     <Content Include="Views\Applicants\Details.cshtml" />
     <Content Include="Views\Applicants\Edit.cshtml" />
     <Content Include="Views\Applicants\Index.cshtml" />
-    <Content Include="Views\Applicants\NewApplicant.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\Dash.cshtml" />
     <Content Include="Web.config" />
@@ -357,8 +301,17 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\NewApplicant.cshtml" />
+    <Content Include="Views\Home\Signup.cshtml" />
+    <Content Include="Views\Home\Personality1.cshtml" />
+    <Content Include="Views\Home\Personality2.cshtml" />
+    <Content Include="Views\Home\Personality3.cshtml" />
+    <Content Include="Views\Home\Personality4.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\DB\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

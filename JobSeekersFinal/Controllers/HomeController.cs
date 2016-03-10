@@ -20,14 +20,44 @@ namespace JobSeekersFinal.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult NewApplicant()
+        {
+
+            return View();
+        }
+
+        public ActionResult Signup()
+        {
+
+            return View();
+        }
+
+        public ActionResult Personality1()
+        {
+
+            return View();
+        }
+        public ActionResult Personality2()
+        {
+
+            return View();
+        }
+        public ActionResult Personality3()
+        {
+
+            return View();
+        }
+        public ActionResult Personality4()
+        {
 
             return View();
         }

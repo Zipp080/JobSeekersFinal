@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SeekersDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ANSWER">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="QuestionID" Type="int" />
+    <Property Name="Answer" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ANSWERSCORE">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="AnswerID" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="Score" Type="int" />
+  </EntityType>
+  <EntityType Name="APPLICANTS">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Zipcode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Skills" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="APPLICANTSANSWERS">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="AnswerId" Type="int" />
+    <Property Name="ApplicantId" Type="int" />
+  </EntityType>
+  <EntityType Name="CATEGORY">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Category" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="QUESTION">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Question" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_ANSWER_QUESTION">
+    <End Role="QUESTION" Type="Self.QUESTION" Multiplicity="0..1" />
+    <End Role="ANSWER" Type="Self.ANSWER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUESTION">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ANSWER">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ANSWERSCORE_ANSWER">
+    <End Role="ANSWER" Type="Self.ANSWER" Multiplicity="0..1" />
+    <End Role="ANSWERSCORE" Type="Self.ANSWERSCORE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ANSWER">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ANSWERSCORE">
+        <PropertyRef Name="AnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ANSWERSCORE_CATEGORY">
+    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+    <End Role="ANSWERSCORE" Type="Self.ANSWERSCORE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORY">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ANSWERSCORE">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_APPLICANTSANSWERS_ANSWER">
+    <End Role="ANSWER" Type="Self.ANSWER" Multiplicity="0..1" />
+    <End Role="APPLICANTSANSWERS" Type="Self.APPLICANTSANSWERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ANSWER">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="APPLICANTSANSWERS">
+        <PropertyRef Name="AnswerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_APPLICANTSANSWERS_APPLICANT">
+    <End Role="APPLICANTS" Type="Self.APPLICANTS" Multiplicity="0..1" />
+    <End Role="APPLICANTSANSWERS" Type="Self.APPLICANTSANSWERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APPLICANTS">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="APPLICANTSANSWERS">
+        <PropertyRef Name="ApplicantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SeekersDBModelStoreContainer">
+    <EntitySet Name="ANSWER" EntityType="Self.ANSWER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ANSWERSCORE" EntityType="Self.ANSWERSCORE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APPLICANTS" EntityType="Self.APPLICANTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APPLICANTSANSWERS" EntityType="Self.APPLICANTSANSWERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUESTION" EntityType="Self.QUESTION" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ANSWER_QUESTION" Association="Self.FK_ANSWER_QUESTION">
+      <End Role="QUESTION" EntitySet="QUESTION" />
+      <End Role="ANSWER" EntitySet="ANSWER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ANSWERSCORE_ANSWER" Association="Self.FK_ANSWERSCORE_ANSWER">
+      <End Role="ANSWER" EntitySet="ANSWER" />
+      <End Role="ANSWERSCORE" EntitySet="ANSWERSCORE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ANSWERSCORE_CATEGORY" Association="Self.FK_ANSWERSCORE_CATEGORY">
+      <End Role="CATEGORY" EntitySet="CATEGORY" />
+      <End Role="ANSWERSCORE" EntitySet="ANSWERSCORE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_APPLICANTSANSWERS_ANSWER" Association="Self.FK_APPLICANTSANSWERS_ANSWER">
+      <End Role="ANSWER" EntitySet="ANSWER" />
+      <End Role="APPLICANTSANSWERS" EntitySet="APPLICANTSANSWERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_APPLICANTSANSWERS_APPLICANT" Association="Self.FK_APPLICANTSANSWERS_APPLICANT">
+      <End Role="APPLICANTS" EntitySet="APPLICANTS" />
+      <End Role="APPLICANTSANSWERS" EntitySet="APPLICANTSANSWERS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
