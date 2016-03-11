@@ -2,8 +2,21 @@ h4 {
     font-size: 1.5em;
 }
 
-.text-muted {
+.Power {
     font-size: 3em;
+    color: #d54b65;
+}
+.Inspirational {
+    font-size: 3em;
+    color: #69f3f1;
+}
+.Balance {
+    font-size: 3em;
+    color: #a6d785;
+}
+.Analytical {
+    font-size: 3em;
+    color: #f3ce69;
 }
 
  .hoverTable {
@@ -21,6 +34,12 @@ h4 {
     .hoverTable tr:hover {
           background-color: #d8d8d8;
  }
+
+ tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
 
 body {
   padding-top: 50px;
@@ -104,4 +123,101 @@ body {
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+}
+
+/* table */
+table.tablesorter {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 12pt;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 12pt;
+	padding: 4px;
+}
+table.tablesorter thead tr .header {
+	background-image: url(/img/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(/img/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(/img/desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #8dbdd8;
+}
+
+
+
+
+
+/* applicant box */
+.dropdown-user:hover {
+    cursor: pointer;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+    width: 200px;
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+     width: 200px;
+}
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+     width: 200px;
+
+}
+.toppad
+{margin-top:20px;
+}
+
+.panel-body {
+    font-size: 20em;
+    width: 500px;
+}
+
+.applicantbox {
+    margin-left:20px;
+    width: 550px;
+}
+
+.applicantpic {
+    width: 150px;
+    position: absolute;
+    right: 450px;
+}
+
+.applicantinfo {
+    margin-left:50px;
+    width: 450px;
+    margin-top: -200px;
+}
+
+h5 {
+    position: fixed;
+    right: 150px;
+    font-size: xx-large;
+    top: 150px;
 }

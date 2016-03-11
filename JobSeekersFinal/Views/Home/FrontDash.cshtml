@@ -13,20 +13,16 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
     <title>JobSeekers - Dashboard</title>
-    <link href="~/Content/bootstrap.min-2.css" rel="stylesheet">
     <link href="~/Content/dashboard.css" rel="stylesheet">
+    <script type="text/javascript" src="~/Scripts/jquery-latest.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.tablesorter.js"></script> 
 </head>
 
 <body>
+    @*Top Nav Bar*@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand" href="#">JobSeekers</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
@@ -38,64 +34,134 @@
             </div>
         </div>
     </nav>
+   
+     @*Right Applicant Bar*@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
-                <ul class="nav nav-sidebar">
-                  
-                </ul>
+                    <div class="row">
+                        <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+                        </div>
+
+                        @*Applicant Box*@
+                        <div class="applicantbox">
+                           <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Eric Robert Thibeau</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="applicantpic" align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
+                                        <h5>Eric Robert <br />Thibeau</h5>
+                                         <div class="applicantinfo">
+                                            <br>
+                                            <table class="table table-user-information">
+                                                <tbody>
+                                                     <tr>
+                                                        <td>Title:</td>
+                                                        <td>Project Manager</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Address:</td>
+                                                        <td>43 Glen Cv, Laguna Niguel, CA 92677</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Email</td>
+                                                        <td><a href="mailto:ericthibeau@gmail.com">Click to Email</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Phone Number</td>
+                                                        <td>555-555-5555<br>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Skills</td>
+                                                        <td>Microsoft Project, Scrum, SQL, HTML, JIRA<br>
+                                                    </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            @*Soft Skills Stats*@
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h1 class="page-header">Soft Skills</h1>
                 <div class="row placeholders">
                     <div class="col-xs-6 col-sm-3 placeholder">
                         <img src="~/img/powerful1.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
                         <h4>Power</h4>
-                        <span class="text-muted" >76</span>
+                        <span class="Power">76</span>
                     </div>
                     <div class="col-xs-6 col-sm-3 placeholder">
                         <img src="~/img/blue2.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
                         <h4>Inspirational</h4>
-                        <span class="text-muted">25</span>
+                        <span class="Inspirational">25</span>
                     </div>
                     <div class="col-xs-6 col-sm-3 placeholder">
                         <img src="~/img/green.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
                         <h4>Balance</h4>
-                        <span class="text-muted" font size="6">21</span>
+                        <span class="Balance" font size="6">21</span>
                     </div>
                     <div class="col-xs-6 col-sm-3 placeholder">
                         <img src="~/img/yellow2.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
                         <h4>Analytical</h4>
-                        <span class="text-muted">35</span>
+                        <span class="Analytical">35</span>
                     </div>
                 </div>
+
+                @*Applicant Table*@
                 <h2 class="sub-header">Applicants</h2>
-                <div ng-controller="mainController">
-                    <table class="hoverTable">
-                        <thead>
-                            <tr ng-repeat="applicant in applicants">
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Title</th>
-                                <th>City</th>
-                                <th>State</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Eric</td>
-                                <td>Thibeau</td>
-                                <td>Project Manager</td>
-                                <td>Laguna Niguel</td>
-                                <td>CA</td>
-                            </tr>
-                  
-                        </tbody>
-                    </table>
-                </div>
+                  <table id="myTable" class="tablesorter">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Title</th>
+                            <th>City</th>
+                            <th>State</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Eric</td>
+                            <td>Thibeau</td>
+                            <td>Project Manager</td>
+                            <td>Laguna Niguel</td>
+                            <td>CA</td>
+                        </tr>
+                        <tr>
+                            <td>Tony</td>
+                            <td>Stark</td>
+                            <td>IronMan</td>
+                            <td>Malibu</td>
+                            <td>CA</td>
+                        </tr>
+                        <tr>
+                            <td>Steve</td>
+                            <td>Rogers</td>
+                            <td>Captain America</td>
+                            <td>New York City</td>
+                            <td>NY</td>
+                        </tr>
+                    </tbody>
+                </table> 
+               
+          
+                <script>
+                    $(document).ready(function ()
+                        {
+                            $("#myTable").tablesorter();
+                        }
+                    );
+                </script>
+
+            </div>
             </div>
         </div>
-    </div>
 </body>
 </html>
 
