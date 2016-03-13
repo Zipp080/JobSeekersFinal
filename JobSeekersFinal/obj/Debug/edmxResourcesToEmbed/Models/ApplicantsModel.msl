@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SeekersDBModelStoreContainer" CdmEntityContainer="SeekersDBEntities">
+    <EntitySetMapping Name="ANSWERs">
+      <EntityTypeMapping TypeName="SeekersDBModel.ANSWER">
+        <MappingFragment StoreEntitySet="ANSWER">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="Answer1" ColumnName="Answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ANSWERSCOREs">
+      <EntityTypeMapping TypeName="SeekersDBModel.ANSWERSCORE">
+        <MappingFragment StoreEntitySet="ANSWERSCORE">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APPLICANTS">
+      <EntityTypeMapping TypeName="SeekersDBModel.APPLICANT">
+        <MappingFragment StoreEntitySet="APPLICANTS">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Skills" ColumnName="Skills" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APPLICANTSANSWERS">
+      <EntityTypeMapping TypeName="SeekersDBModel.APPLICANTSANSWER">
+        <MappingFragment StoreEntitySet="APPLICANTSANSWERS">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEGORies">
+      <EntityTypeMapping TypeName="SeekersDBModel.CATEGORY">
+        <MappingFragment StoreEntitySet="CATEGORY">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Category1" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUESTIONs">
+      <EntityTypeMapping TypeName="SeekersDBModel.QUESTION">
+        <MappingFragment StoreEntitySet="QUESTION">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Question1" ColumnName="Question" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

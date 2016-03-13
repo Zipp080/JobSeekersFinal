@@ -15,7 +15,7 @@ namespace JobSeekersFinal.Models
         public string City { get; set; } = null;
         public string State { get; set; } = null;
         public int Zip { get; set; } = 0;
-        public int Phone { get; set; } = 0;
+        public string Phone { get; set; } = null;
         public string Email { get; set; } = null;
 
         public string DesiredPositions { get; set; } = null;
@@ -34,7 +34,7 @@ namespace JobSeekersFinal.Models
             City = data["city"].ToString();
             State = data["state"].ToString();
             Zip = Convert.ToInt32(data["zip"]);
-            Phone = Convert.ToInt32(data["phone"]);
+            Phone = data["phone"].ToString();
             Email = data["email"].ToString();
             DesiredPositions = data["positions"].ToString();
             Skills = data["skills"].ToString();
