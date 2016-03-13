@@ -34,7 +34,8 @@
     <br />
     <br />
         <div id="form_container">
-                <div class="form_description">
+            <form id="form_1109963" class="appnitro" enctype="multipart/form-data" method="post" action="">
+                <div class="form_description"><br /><br />
                     <h2 class="fs-title">FILL OUT YOUR PROFILE</h2>
                     <h3 class="fs-subtitle">Step 2</h3>
                 </div>
@@ -64,14 +65,14 @@
                         </div>
 
                         <div class="right">
-                            <input id="new_app_state" name="element_2_4" class="element text" value="" size="8" type="text" placeholder=" State">
+                            <input id="new_app_state" name="element_2_4" class="element text" value="" maxlength="2" size="5" type="text" placeholder=" State">
                         </div>
 
                         <div class="left">
-                            <input id="new_app_zip" name="element_2_5" class="element text medium" maxlength="15" value="" type="text" placeholder=" Zip">
+                            <input id="new_app_zip" name="element_2_5" class="element text" maxlength="5" size="2" value="" type="text" placeholder=" Zip">
                         </div>
 
-                       
+
                     </li>
                     <li id="li_3">
                         <label class="description" for="element_3">Phone </label>
@@ -82,7 +83,7 @@
                     <li id="li_4">
                         <label class="description" for="element_4">Email </label>
                         <div>
-                            <input id="new_app_email" name="element_4" class="element text medium" type="text" maxlength="255" value="@ViewBag.EmailAddress.Replace("%40","@")"/>
+                            <input id="new_app_email" name="element_4" class="element text medium" type="text" maxlength="255" value="@ViewBag.EmailAddress.Replace("%40","@")" />
                         </div>
                     </li>
                     <li id="li_5">
@@ -105,10 +106,11 @@
                     </li>
                     <li class="buttons">
                         <input type="hidden" name="form_id" value="1109963" />
-                        <input id="saveForm" class="button_text" type="submit" name="submit" value="Next" style="float: right;" onclick="SendProfileData()"/>
+                        <input id="saveForm" class="button_text" type="button" name="submit" value="Next" onclick="SendProfileData()" />
                     </li>
                 </ul>
-            <p id="next_page" hidden>1</p>
-        </div>
+                </form>
+                <p id="next_page" hidden>1</p>
+</div>
 </body>
 </html>

@@ -22,13 +22,15 @@ body {
 }
 
 
-#msform {
+.msform {
 	width: 400px;
 	margin: 50px auto;
 	text-align: center;
 	position: relative;
+   
 }
-#msform fieldset {
+
+.msform fieldset {
 	background: white;
 	border: 0 none;
 	border-radius: 3px;
@@ -39,10 +41,11 @@ body {
 	width: 80%;
 	margin: 0 10%;
 	
+	/*stacking fieldsets above each other*/
 	position: relative;
 }
 
-#msform input, #msform textarea {
+.msform input, #msform textarea {
 	padding: 15px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -53,18 +56,5 @@ body {
 	color: #2C3E50;
 	font-size: 13px;
 }
-#msform .action-button {
-	width: 100px;
-	background: #27AE60;
-	font-weight: bold;
-	color: white;
-	border: 0 none;
-	border-radius: 1px;
-	cursor: pointer;
-	padding: 10px 5px;
-	margin: 10px 5px;
-}
-#msform .action-button:hover, #msform .action-button:focus {
-	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
-}
+
 

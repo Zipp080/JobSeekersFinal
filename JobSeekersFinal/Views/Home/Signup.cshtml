@@ -23,20 +23,26 @@
                 <a class="navbar-brand" href="#">JobSeekers</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                
             </div>
         </div>
     </nav>
     <br />
     <br />
-    <h2 class="fs-title">Create your account</h2>
-    <h3 class="fs-subtitle">Step 1</h3>
-    <form class="msform">
-        <input type="text" id="email_form" placeholder="Email" />
-        <input type="password" id="password_form" placeholder="Password" />
-        <input type="password" id="verify_password_form" placeholder="Confirm Password" />
-        <input id="create_account_btn" class="button_text" type="button" value="Next" onclick="VerifyNewAccount();" />
-    </form>
+
+    @*Create Your Account Box*@
+   <div class="msform">
+       <form class="msform">
+           <fieldset>
+               <h2 class="fs-title">Create your account</h2>
+               <h3 class="fs-subtitle">Step 1</h3>
+                   <input type="text" id="email_form" placeholder="Email" />
+                   <input type="password" id="password_form" placeholder="Password" />
+                   <input type="password" id="verify_password_form" placeholder="Confirm Password" />
+                   <input id="create_account_btn" class="button_text" type="button" value="Next" onclick="VerifyNewAccount();" />
+           </fieldset>
+       </form>
+   </div>
+   
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='http://thecodeplayer.com/uploads/js/jquery.easing.min.js'></script>
     <script src="~/Scripts/index.js"></script>

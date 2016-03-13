@@ -27,28 +27,17 @@ body
 #form_container
 {
 	background:#fff;
-	border:1px solid #ccc;
+	border:2px solid #ccc;
 	margin:0 auto;
 	text-align:left;
 	width:640px;
-
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
 }
 
-form.appnitro
-{
-	margin:20px 20px 0;
-	padding:0 0 20px;
-}
 
-.appnitro
+form_container li
 {
-	font-family: montserrat;
-	font-size:small;
-}
-
-.appnitro li
-{
-	width:61%;
+	width:90%;
 }
 
 form ul
@@ -253,3 +242,14 @@ textarea.medium
 	width:97%;
 }
 
+#saveForm {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 90%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
