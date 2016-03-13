@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "NewApplicant";
+}
+
+<h2></h2>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="~/Content/NewApplicant.css" media="all">
+    <script type="text/javascript" src="~/Scripts/view.js"></script>
+</head>
+
+<body id="main_body">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">JobSeekers</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+
+                </div>
+            </div>
+        </nav>
+    <br />
+    <br />
+    <br />
+    <br />
+        <div id="form_container">
+                <div class="form_description">
+                    <h2 class="fs-title">FILL OUT YOUR PROFILE</h2>
+                    <h3 class="fs-subtitle">Step 2</h3>
+                </div>
+                <ul>
+
+                    <li id="li_1">
+                        <label class="description" for="element_1">Name </label>
+                        <span>
+                            <input id="new_app_first_name" name="element_1_2" class="element text" maxlength="255" size="15" value="" placeholder=" First Name" />
+
+                        </span>
+                        <span>
+                            <input id="new_app_middle_name" name="element_1_2" class="element text" maxlength="255" size="12" value="" placeholder=" Middle Name" />
+                        </span>
+                        <span>
+                            <input id="new_app_last_name" name="element_1_3" class="element text" maxlength="255" size="15" value="" placeholder=" Last Name" />
+                        </span>
+                    </li>
+                    <li id="li_2">
+                        <label class="description" for="element_2">Address </label>
+
+                        <div>
+                            <input id="new_app_street" name="element_1_1" class="element text large" value="" type="text" placeholder=" Street">
+                        </div>
+                        <div class="left">
+                            <input id="new_app_city" name="element_2_3" class="element text medium" value="" type="text" placeholder=" City">
+                        </div>
+
+                        <div class="right">
+                            <input id="new_app_state" name="element_2_4" class="element text" value="" size="8" type="text" placeholder=" State">
+                        </div>
+
+                        <div class="left">
+                            <input id="new_app_zip" name="element_2_5" class="element text medium" maxlength="15" value="" type="text" placeholder=" Zip">
+                        </div>
+
+                       
+                    </li>
+                    <li id="li_3">
+                        <label class="description" for="element_3">Phone </label>
+                        <span>
+                            <input id="new_app_phone" name="element_3_1" class="element text" maxlength="10" value="" size="12" type="text" placeholder=" ##########">
+                        </span>
+                    </li>
+                    <li id="li_4">
+                        <label class="description" for="element_4">Email </label>
+                        <div>
+                            <input id="new_app_email" name="element_4" class="element text medium" type="text" maxlength="255" value="@ViewBag.EmailAddress.Replace("%40","@")"/>
+                        </div>
+                    </li>
+                    <li id="li_5">
+                        <label class="description" for="element_5">Desired Position </label>
+                        <div>
+                            <input id="new_app_positions" name="element_5" class="element text medium" type="text" maxlength="255" value="" placeholder=" Programmer, Project Manager, Chef, etc..." />
+                        </div>
+                    </li>
+                    <li id="li_6">
+                        <label class="description" for="element_6">Skills </label>
+                        <div>
+                            <textarea id="new_app_skills" name="element_6" class="element textarea medium" height="20em" placeholder=" C++, SQL, Bowstaff, Project Management, Scrum, etc..."></textarea>
+                        </div>
+                    </li>
+                    <li id="li_7">
+                        <label class="description" for="element_7">Resume </label>
+                        <div>
+                            <input id="new_app_resume" name="element_7" class="element file" type="file" />
+                        </div>
+                    </li>
+                    <li class="buttons">
+                        <input type="hidden" name="form_id" value="1109963" />
+                        <input id="saveForm" class="button_text" type="submit" name="submit" value="Next" style="float: right;" onclick="SendProfileData()"/>
+                    </li>
+                </ul>
+            <p id="next_page" hidden>1</p>
+        </div>
+</body>
+</html>

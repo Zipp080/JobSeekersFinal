@@ -1,23 +1,3 @@
-h4 {
-    font-size: 1.5em;
-}
-
-.Power {
-    font-size: 3em;
-    color: #d54b65;
-}
-.Inspirational {
-    font-size: 3em;
-    color: #69f3f1;
-}
-.Balance {
-    font-size: 3em;
-    color: #a6d785;
-}
-.Analytical {
-    font-size: 3em;
-    color: #f3ce69;
-}
 
  .hoverTable {
 		width:99.5%; 
@@ -206,7 +186,7 @@ background-color: #8dbdd8;
 .applicantpic {
     width: 150px;
     position: absolute;
-    right: 450px;
+    right: 410px;
 }
 
 .applicantinfo {
@@ -215,9 +195,48 @@ background-color: #8dbdd8;
     margin-top: -200px;
 }
 
-h5 {
-    position: fixed;
+applicantname {
+    position: absolute;
     right: 150px;
     font-size: xx-large;
     top: 150px;
 }
+
+personalitydom {
+    font-size: large;
+}
+
+personality {
+    font-size: medium;
+}
+
+.Power {
+    font-size: large;
+    color: #d54b65;
+}
+.Inspirational {
+    font-size: large;
+    color: #69f3f1;
+}
+.Balance {
+    font-size: large;
+    color: #a6d785;
+}
+.Analytical {
+    font-size: large;
+    color: #f3ce69;
+}
+
+.post-content {
+    margin-top: -65px;
+    right: 50px;
+
+}
+
+.thumbnail {
+    position:fixed;
+    bottom:200px;
+    right:170px;
+    text-align:center;
+}
+

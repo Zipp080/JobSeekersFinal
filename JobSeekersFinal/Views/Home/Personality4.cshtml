@@ -1,94 +1,59 @@
-﻿
-@{
-    ViewBag.Title = "Personality4";
-}
-
-<h2></h2>
-
-<html>
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="~/Content/NewApplicant.css" media="all">
-    <script type="text/javascript" src="~/Scripts/view.js"></script>
-</head>
-
-<body id="main_body">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                   
-                </button>
-                <a class="navbar-brand" href="#">JobSeekers</a>
-            </div>
-          
+﻿<div id="form_container">
+        <div class="form_description">
+            <h2 class="fs-title">TAKE A SHORT SURVEY</h2>
+            <h3 class="fs-subtitle">Step 3</h3>
         </div>
-    </nav>
-    <br />
-    <br />
-    <br />
-    <br />
-    <div id="form_container">
-        <form id="form_1109963" class="appnitro" enctype="multipart/form-data" method="post" action="">
-            <div class="form_description">
-                <h2 class="fs-title">SURVEY - CONTINUED</h2>
-                <h3 class="fs-subtitle">Step 3</h3>
-            </div>
-            <ul>
+        <ul>
 
-                <li id="li_1">
-                    <label class="description" for="element_1">16. What is your favorite color?</label>
-                    <span>
-                        <input type="radio" name="Q1" value="Red" /> Red<br />
-                        <input type="radio" name="Q1" value="Blue" /> Blue<br />
-                        <input type="radio" name="Q1" value="Green" /> Green<br />
-                        <input type="radio" name="Q1" value="Green" /> Black<br />
-                    </span>
-                </li>
-                <li id="li_2">
-                    <label class="description" for="element_2">17. What is your favorite color?</label>
-                    <span>
-                        <input type="radio" name="Q2" value="Red" /> Red<br />
-                        <input type="radio" name="Q2" value="Blue" /> Blue<br />
-                        <input type="radio" name="Q2" value="Green" /> Green<br />
-                        <input type="radio" name="Q2" value="Green" /> Black<br />
-                    </span>
-                </li>
-                <li id="li_3">
-                    <label class="description" for="element_3">18. What is your favorite color?</label>
-                    <span>
-                        <input type="radio" name="Q3" value="Red" /> Red<br />
-                        <input type="radio" name="Q3" value="Blue" /> Blue<br />
-                        <input type="radio" name="Q3" value="Green" /> Green<br />
-                        <input type="radio" name="Q3" value="Green" /> Black<br />
-                    </span>
-                </li>
-                <li id="li_4">
-                    <label class="description" for="element_4">19. What is your favorite color?</label>
-                    <span>
-                        <input type="radio" name="Q4" value="Red" /> Red<br />
-                        <input type="radio" name="Q4" value="Blue" /> Blue<br />
-                        <input type="radio" name="Q4" value="Green" /> Green<br />
-                        <input type="radio" name="Q4" value="Green" /> Black<br />
-                    </span>
-                </li>
-                <li id="li_5">
-                    <label class="description" for="element_2">20. What is your favorite color?</label>
-                    <span>
-                        <input type="radio" name="Q5" value="Red" /> Red<br />
-                        <input type="radio" name="Q5" value="Blue" /> Blue<br />
-                        <input type="radio" name="Q5" value="Green" /> Green<br />
-                        <input type="radio" name="Q5" value="Green" /> Black<br />
-                    </span>
-                </li>
-                <li class="buttons">
-                    <input type="hidden" name="form_id" value="1109963" />
-                    <input id="saveForm" class="button_text" type="submit" name="submit" value="Next" style="float: right;" />
-                </li>
-            </ul>
-        </form>
-    </div>
-</body>
-</html>
+            <li id="li_1">
+                <label class="description">@Model.Q1.Item1</label>
+                <span>
+                    @for (int i = 0; i < Model.Q1.Item2.Count; i++)
+                    {
+                        <input type="radio" name="Q1" value="@Model.Q1.Item2[i].Item1" /> @Model.Q1.Item2[i].Item2<br />
+                    }
+                </span>
+            </li>
+            <li id="li_2">
+                <label class="description">@Model.Q2.Item1</label>
+                <span>
+                    @for (int i = 0; i < Model.Q2.Item2.Count; i++)
+                    {
+                        <input type="radio" name="Q2" value="@Model.Q2.Item2[i].Item1" /> @Model.Q2.Item2[i].Item2<br />
+                    }
+                </span>
+            </li>
+            <li id="li_3">
+                <label class="description">@Model.Q3.Item1</label>
+                <span>
+                    @for (int i = 0; i < Model.Q3.Item2.Count; i++)
+                    {
+                        <input type="radio" name="Q3" value="@Model.Q3.Item2[i].Item1" /> @Model.Q3.Item2[i].Item2<br />
+                    }
+                </span>
+            </li>
+            <li id="li_4">
+                <label class="description">@Model.Q4.Item1</label>
+                <span>
+                    @for (int i = 0; i < Model.Q4.Item2.Count; i++)
+                    {
+                        <input type="radio" name="Q4" value="@Model.Q4.Item2[i].Item1" /> @Model.Q4.Item2[i].Item2<br />
+                    }
+                </span>
+            </li>
+            <li id="li_5">
+                <label class="description">@Model.Q5.Item1</label>
+                <span>
+                    @for (int i = 0; i < Model.Q5.Item2.Count; i++)
+                    {
+                        <input type="radio" name="Q5" value="@Model.Q5.Item2[i].Item1" /> @Model.Q5.Item2[i].Item2<br />
+                    }
+                </span>
+            </li>
+            <li class="buttons">
+                <input type="hidden" name="form_id" value="1109963" />
+                <input id="saveForm" class="button_text" type="submit" name="submit" value="Next" onclick="SubmitQuizSection()"  />
+            </li>
+        </ul>
+    <p id="next_page" hidden>0</p>
+</div>

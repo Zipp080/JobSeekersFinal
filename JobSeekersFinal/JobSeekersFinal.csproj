@@ -200,16 +200,24 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DataSources\ApplicantData.cs" />
+    <Compile Include="DataSources\DataService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Applicant.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\VM_Personality.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SeekersDB.mdf" />
+    <Content Include="App_Data\SeekersDB_log.ldf">
+      <DependentUpon>SeekersDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dashboard.css" />
@@ -230,6 +238,7 @@
     <Content Include="img\circle-xxl.png" />
     <Content Include="img\company-culture.jpg" />
     <Content Include="img\desc.gif" />
+    <Content Include="img\dlbutton.png" />
     <Content Include="img\Dressed-Up-Man2.jpg" />
     <Content Include="img\green.png" />
     <Content Include="img\hire-me-sign.jpg" />
@@ -1025,6 +1034,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JsUtils.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -1035,6 +1045,7 @@
     <Content Include="Scripts\__jquery.tablesorter.js" />
     <Content Include="Views\Home\FrontDash.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Home\AppComplete.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1077,10 +1088,7 @@
     <Content Include="Views\Home\Personality3.cshtml" />
     <Content Include="Views\Home\Personality4.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\DB\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
