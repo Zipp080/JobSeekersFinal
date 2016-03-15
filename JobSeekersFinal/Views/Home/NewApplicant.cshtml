@@ -6,8 +6,7 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
+    <title>JobSeekers - New Applicant</title>
     <link rel="stylesheet" type="text/css" href="~/Content/NewApplicant.css" media="all">
     <script type="text/javascript" src="~/Scripts/view.js"></script>
 </head>
@@ -34,7 +33,7 @@
     <br />
     <br />
         <div id="form_container">
-            <form id="form_1109963" class="appnitro" enctype="multipart/form-data" method="post" action="">
+            <form class="form_container" enctype="multipart/form-data" method="post" action="">
                 <div class="form_description"><br /><br />
                     <h2 class="fs-title">FILL OUT YOUR PROFILE</h2>
                     <h3 class="fs-subtitle">Step 2</h3>
@@ -42,70 +41,69 @@
                 <ul>
 
                     <li id="li_1">
-                        <label class="description" for="element_1">Name </label>
+                        <label class="description" for="Name">Name </label>
                         <span>
-                            <input id="new_app_first_name" name="element_1_2" class="element text" maxlength="255" size="15" value="" placeholder=" First Name" />
+                            <input id="new_app_first_name" class="element text" maxlength="255" size="15" value="" placeholder=" First Name" />
 
                         </span>
                         <span>
-                            <input id="new_app_middle_name" name="element_1_2" class="element text" maxlength="255" size="12" value="" placeholder=" Middle Name" />
+                            <input id="new_app_middle_name" class="element text" maxlength="255" size="12" value="" placeholder=" Middle Name" />
                         </span>
                         <span>
-                            <input id="new_app_last_name" name="element_1_3" class="element text" maxlength="255" size="15" value="" placeholder=" Last Name" />
+                            <input id="new_app_last_name" class="element text" maxlength="255" size="15" value="" placeholder=" Last Name" />
                         </span>
                     </li>
                     <li id="li_2">
-                        <label class="description" for="element_2">Address </label>
+                        <label class="description" for="Address">Address </label>
 
                         <div>
-                            <input id="new_app_street" name="element_1_1" class="element text large" value="" type="text" placeholder=" Street">
+                            <input id="new_app_street" class="element text large" value="" type="text" placeholder=" Street">
                         </div>
                         <div class="left">
-                            <input id="new_app_city" name="element_2_3" class="element text medium" value="" type="text" placeholder=" City">
+                            <input id="new_app_city" class="element text medium" value="" type="text" placeholder=" City">
                         </div>
 
                         <div class="right">
-                            <input id="new_app_state" name="element_2_4" class="element text" value="" maxlength="2" size="5" type="text" placeholder=" State">
+                            <input id="new_app_state" class="element text" value="" maxlength="2" size="5" type="text" placeholder=" State">
                         </div>
 
                         <div class="left">
-                            <input id="new_app_zip" name="element_2_5" class="element text" maxlength="5" size="2" value="" type="text" placeholder=" Zip">
+                            <input id="new_app_zip" class="element text" maxlength="5" size="2" value="" type="text" placeholder=" Zip">
                         </div>
 
 
                     </li>
                     <li id="li_3">
-                        <label class="description" for="element_3">Phone </label>
+                        <label class="description" for="Phone">Phone </label>
                         <span>
-                            <input id="new_app_phone" name="element_3_1" class="element text" maxlength="10" value="" size="12" type="text" placeholder=" ##########">
+                            <input id="new_app_phone" class="element text" maxlength="10" value="" size="12" type="text" placeholder=" ##########">
                         </span>
                     </li>
                     <li id="li_4">
-                        <label class="description" for="element_4">Email </label>
+                        <label class="description" for="Email">Email </label>
                         <div>
-                            <input id="new_app_email" name="element_4" class="element text medium" type="text" maxlength="255" value="@ViewBag.EmailAddress.Replace("%40","@")" />
+                            <input id="new_app_email" class="element text medium" type="text" maxlength="255" value="@ViewBag.EmailAddress.Replace("%40","@")" />
                         </div>
                     </li>
                     <li id="li_5">
-                        <label class="description" for="element_5">Desired Position </label>
+                        <label class="description" for="Title">Desired Position </label>
                         <div>
-                            <input id="new_app_positions" name="element_5" class="element text medium" type="text" maxlength="255" value="" placeholder=" Programmer, Project Manager, Chef, etc..." />
+                            <input id="new_app_positions" class="element text medium" type="text" maxlength="255" value="" placeholder=" Programmer, Project Manager, Chef, etc..." />
                         </div>
                     </li>
                     <li id="li_6">
-                        <label class="description" for="element_6">Skills </label>
+                        <label class="description" for="Skills">Skills </label>
                         <div>
-                            <textarea id="new_app_skills" name="element_6" class="element textarea medium" height="20em" placeholder=" C++, SQL, Bowstaff, Project Management, Scrum, etc..."></textarea>
+                            <textarea id="new_app_skills" class="element textarea medium" height="20em" placeholder=" C++, SQL, Bowstaff, Project Management, Scrum, etc..."></textarea>
                         </div>
                     </li>
                     <li id="li_7">
-                        <label class="description" for="element_7">Resume </label>
+                        <label class="description" for="Resume">Resume </label>
                         <div>
-                            <input id="new_app_resume" name="element_7" class="element file" type="file" />
+                            <input id="new_app_resume" class="element file" type="file" />
                         </div>
                     </li>
                     <li class="buttons">
-                        <input type="hidden" name="form_id" value="1109963" />
                         <input id="saveForm" class="button_text" type="button" name="submit" value="Next" onclick="SendProfileData()" />
                     </li>
                 </ul>
