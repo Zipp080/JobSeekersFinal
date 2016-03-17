@@ -1,7 +1,9 @@
 ﻿@{
     ViewBag.Title = "ApplicantLogin";
 }
-
+@{
+    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+}
 
 <html>
 
@@ -12,25 +14,6 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-        <div class="container">
-            <div class="get-started-link">
-                @Html.ActionLink("GET STARTED HERE", "Learn", "Home", null, new { @class = "navbar-brand" })
-            </div>
-
-            <div class="learn">
-                @Html.ActionLink("Learn how it works", "Signup", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#about">Employer Login</a>
-                </li>
-                <li>
-                    <a href="#contact">Applicant Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
     <br />
     <br />
 
