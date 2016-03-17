@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "ApplicantProfile";
+}
+
+<h2></h2>
+<html lang="en">
+
+<head>
+    <title>JobSeekers - Profile</title>
+    <link href="~/Content/profile.css" rel="stylesheet">
+    <script type="text/javascript" src="~/Scripts/jquery-latest.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.tablesorter.js"></script> 
+</head>
+
+<body>
+    <h1> Welcome, Eric!</h1>
+    @*Top Nav Bar*@
+
+
+<div class="applicantpersonal">
+    <ul class="personal">
+        Personal Information
+        <li>Address:</li>
+        <li>City:</li>
+        <li>State:</li>
+        <li>Zip:</li>
+        <li>Phone:</li>
+        <li>Email:</li>
+
+    </ul>
+</div>
+
+
+<div class="applicantprofessional">
+   Title:
+   Skills:
+</div>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">JobSeekers</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">My Profile</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="mailto:webmaster@jobseekers.com">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="applicantpic" align="center"> <img alt="User Pic" src="~/img/ProfilePics/Avatar4.png" class="img-circle img-responsive"> </div>
+
+
+@*Applicant Box*@
+<div class="applicantbox">
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <div class="row">
+                <applicantname>Eric Robert <br />Thibeau</applicantname>
+               
+            </div>
+        </div>
+    </div>
+</div>
+        
+    
+<div class="thumbnail">
+    <a href="resume.docx" download>
+        <img src="~/img/dlbutton.png" />
+    </a>
+    <div class="caption post-content">
+        <h3 style="color:white; font-size:medium">Download Resume</h3>
+    </div>
+</div>
+        
+</body>
+</html>
+
+
