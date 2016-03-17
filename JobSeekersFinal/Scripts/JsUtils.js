@@ -1,9 +1,4 @@
-﻿
-
-
-
-
-function VerifyNewAccount() {
+﻿function VerifyNewAccount() {
     var proposedEmail = $("#email_form").val(),
         proposedPassw = $("#password_form").val(),
         confirmPassW = $("#verify_password_form").val();
@@ -24,7 +19,7 @@ function VerifyNewAccount() {
         data: JSON.stringify(jsonData),
         success: function (data) {
             if (data.Success) {
-                window.location = window.location.origin + "/Home/NewApplicant?email=" + proposedEmail;
+                window.location = window.location.origin + "/Home/NewApplicantProfile?email=" + proposedEmail;
             } else {
                 alert(data.Message);
             }

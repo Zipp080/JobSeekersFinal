@@ -22,7 +22,7 @@ namespace JobSeekersFinal.Controllers
             return View();
         }
 
-        public ActionResult FrontDash()
+        public ActionResult Dashboard()
         {
             return View();
         }
@@ -39,11 +39,45 @@ namespace JobSeekersFinal.Controllers
             return View();
         }
 
+        public ActionResult ApplicantProfile()
+        {
+
+            return View();
+        }
+
+        public ActionResult HowDoesItWork()
+        {
+
+            return View();
+        }
+
+        public ActionResult ApplicantLogin()
+        {
+
+            return View();
+        }
+
+        public ActionResult EmployerLogin()
+        {
+
+            return View();
+        }
+        public ActionResult Sales()
+        {
+
+            return View();
+        }
+        public ActionResult EmployerHelp()
+        {
+
+            return View();
+        }
+
         /// <summary>
         /// Presents applicant data entry forms.
         /// </summary>
         /// <returns></returns>
-        public ActionResult NewApplicant(string email)
+        public ActionResult NewApplicantProfile(string email)
         {
             ApplicantData.StoreApplicantData(email.ToUpper(), new Applicant());
             ViewBag.EmailAddress = email.Replace("@", "%40");
@@ -132,7 +166,7 @@ namespace JobSeekersFinal.Controllers
             using (var sql = new DataService(_connString))
             {
                 sql.SaveQuizSection(ConvertJArrayToIntArray((JArray)jsonData["answerArray"]), jsonData["email"].ToString(), 4);
-                return PartialView("AppComplete");
+                return PartialView("ApplicantComplete");
             }            
         }
 

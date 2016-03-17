@@ -220,6 +220,7 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Profile.css" />
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\jquery.dataTables.min.css" />
@@ -1043,9 +1044,14 @@
     <Content Include="Scripts\view.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\__jquery.tablesorter.js" />
-    <Content Include="Views\Home\FrontDash.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\Home\AppComplete.cshtml" />
+    <Content Include="Views\Home\ApplicantComplete.cshtml" />
+    <Content Include="Views\Home\ApplicantProfile.cshtml" />
+    <Content Include="Views\Home\HowDoesItWork.cshtml" />
+    <Content Include="Views\Home\EmployerLogin.cshtml" />
+    <Content Include="Views\Home\Sales.cshtml" />
+    <Content Include="Views\Home\EmployerHelp.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1056,10 +1062,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\Test - _Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -1078,15 +1080,14 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\NewApplicant.cshtml" />
+    <Content Include="Views\Home\NewApplicantProfile.cshtml" />
     <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Home\Personality1.cshtml" />
     <Content Include="Views\Home\Personality2.cshtml" />
     <Content Include="Views\Home\Personality3.cshtml" />
     <Content Include="Views\Home\Personality4.cshtml" />
+    <Content Include="Views\Home\ApplicantLogin.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

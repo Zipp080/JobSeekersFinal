@@ -253,3 +253,12 @@ textarea.medium
 	color: #2C3E50;
 	font-size: 13px;
 }
+
+questionheading{
+    font-size: 20px;
+    padding: 5px;
+    margin-bottom: 90px;
+    margin-left: 10px;
+    border: 2px solid #222;
+}
+

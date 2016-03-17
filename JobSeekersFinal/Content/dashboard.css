@@ -1,10 +1,10 @@
 
  .hoverTable {
-		width:99.5%; 
+		width:100%; 
 		border-collapse:collapse; 
 	}
 	.hoverTable td{ 
-		padding:7px; border:#000000 1px solid;
+		padding:6px; border:#000000 1px solid;
 	}
 	/* Define the default color for all the table rows */
 	.hoverTable tr{
@@ -25,7 +25,7 @@ body {
   padding-top: 50px;
   position: fixed;
   top: 0px;
-  left: 0px;
+  left: 1px;
 }
 
 .sub-header {
@@ -176,6 +176,7 @@ background-color: #8dbdd8;
 .panel-body {
     font-size: 20em;
     width: 500px;
+    height: 750px;
 }
 
 .applicantbox {
@@ -229,14 +230,19 @@ personality {
 
 .post-content {
     margin-top: -65px;
-    right: 50px;
 
 }
 
 .thumbnail {
-    position:fixed;
-    bottom:200px;
-    right:170px;
-    text-align:center;
+    position:relative;
+    margin-bottom: 30px;
+    text-align: center;
+    bottom:15px;
+    right:-100px;
+    display: inline-block;
 }
 
+h3 {
+   margin-right: -50px;
+
+}
