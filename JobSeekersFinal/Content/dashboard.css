@@ -1,26 +1,4 @@
 
- .hoverTable {
-		width:100%; 
-		border-collapse:collapse; 
-	}
-	.hoverTable td{ 
-		padding:6px; border:#000000 1px solid;
-	}
-	/* Define the default color for all the table rows */
-	.hoverTable tr{
-		background: #eff1ec;
-	}
-	/* Define the hover highlight color for the table row */
-    .hoverTable tr:hover {
-          background-color: #d8d8d8;
- }
-
- tfoot input {
-    width: 100%;
-    padding: 3px;
-    box-sizing: border-box;
-}
-
 body {
   padding-top: 50px;
   position: fixed;
@@ -38,23 +16,6 @@ body {
 }
 
 
-/* Sidebar */
-.nav-sidebar {
-  margin-right: -21px; /* 20px padding + 1px border */
-  margin-bottom: 20px;
-  margin-left: -20px;
-}
-.nav-sidebar > li > a {
-  padding-right: 20px;
-  padding-left: 20px;
-}
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-  color: #fff;
-  background-color: #428bca;
-}
-
 .sidebar {
   display: none;
 }
@@ -63,7 +24,7 @@ body {
     position: fixed;
     top: 51px;
     bottom: 0;
-    left: 1300px;
+    left: 1500px;
     width: 640px;
     z-index: 1000;
     display: block;
@@ -86,17 +47,7 @@ body {
     width: 1300px;
   }
 }
-.main .page-header {
-  margin-top: 0;
-}
 
-.placeholders {
-  margin-bottom: 30px;
-  text-align: center;
-}
-.placeholders h4 {
-  margin-bottom: 0;
-}
 .placeholder {
   margin-bottom: 20px;
 }
@@ -109,9 +60,8 @@ body {
 table.tablesorter {
 	font-family:arial;
 	background-color: #CDCDCD;
-	margin:10px 0pt 15px;
 	font-size: 12pt;
-	width: 100%;
+	width: 116%;
 	text-align: left;
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
@@ -147,13 +97,7 @@ background-color: #8dbdd8;
 
 
 
-
-
 /* applicant box */
-.dropdown-user:hover {
-    cursor: pointer;
-}
-
 .table-user-information > tbody > tr {
     border-top: 1px solid rgb(221, 221, 221);
     width: 200px;
@@ -168,9 +112,6 @@ background-color: #8dbdd8;
     border-top: 0;
      width: 200px;
 
-}
-.toppad
-{margin-top:20px;
 }
 
 .panel-body {
@@ -200,32 +141,46 @@ applicantname {
     position: absolute;
     right: 150px;
     font-size: xx-large;
-    top: 150px;
-}
-
-personalitydom {
-    font-size: large;
+    top: 120px;
+    text-align:center;
 }
 
 personality {
     font-size: medium;
+    font-weight:600;
+    text-align: center;
+    margin-top: 5px;
 }
+
+.personalities {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
 
 .Power {
     font-size: large;
     color: #d54b65;
+    left:20px;
+    font-weight:600;
 }
+
 .Inspirational {
     font-size: large;
     color: #69f3f1;
+    font-weight:600;
 }
+
 .Balance {
     font-size: large;
     color: #a6d785;
+    font-weight:600;
 }
+
 .Analytical {
     font-size: large;
     color: #f3ce69;
+    font-weight:600;
 }
 
 .post-content {
@@ -235,14 +190,14 @@ personality {
 
 .thumbnail {
     position:relative;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     text-align: center;
-    bottom:15px;
     right:-100px;
     display: inline-block;
 }
 
 h3 {
    margin-right: -50px;
-
 }
+
+

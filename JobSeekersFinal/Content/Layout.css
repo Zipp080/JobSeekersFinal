@@ -1,0 +1,25 @@
+﻿.get-started-link, 
+.learn,
+.employerlogin {
+    font-family: montserrat;
+    font-weight: 600;
+}
+
+.footer {
+    bottom:0;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+.msform{
+    position:absolute;
+    top:40px;
+    padding-top:0px;
+    padding-bottom:30px;
+}
+
+
+.banner{
+    padding-bottom:1000px;
+    bottom:30px;
+}

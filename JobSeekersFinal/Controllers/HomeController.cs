@@ -166,7 +166,7 @@ namespace JobSeekersFinal.Controllers
             using (var sql = new DataService(_connString))
             {
                 sql.SaveQuizSection(ConvertJArrayToIntArray((JArray)jsonData["answerArray"]), jsonData["email"].ToString(), 4);
-                return PartialView("ApplicantComplete");
+                return View("ApplicationComplete");
             }            
         }
 

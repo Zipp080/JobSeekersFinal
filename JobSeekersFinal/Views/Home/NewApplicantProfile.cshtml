@@ -5,17 +5,14 @@
     Layout = "~/Views/Shared/_LandingLayout.cshtml";
 }
 
-<h2></h2>
 <html>
 
 <head>
     <title>JobSeekers - New Applicant</title>
-    <link rel="stylesheet" type="text/css" href="~/Content/NewApplicant.css" media="all">
     <script type="text/javascript" src="~/Scripts/view.js"></script>
 </head>
 
 <body id="main_body">
-      
     <br />
     <br />
     <br />
@@ -45,7 +42,7 @@
                         <label class="description" for="Address">Address </label>
 
                         <div>
-                            <input id="new_app_street" class="element text large" value="" type="text" placeholder=" Street">
+                            <input id="new_app_street" class="element text" size="51" value="" type="text" placeholder=" Street">
                         </div>
                         <div class="left">
                             <input id="new_app_city" class="element text medium" value="" type="text" placeholder=" City">
@@ -92,11 +89,16 @@
                         </div>
                     </li>
                     <li class="buttons">
+                        <p></p><br />
                         <input id="saveForm" class="button_text" type="button" name="submit" value="Next" onclick="SendProfileData()" />
                     </li>
                 </ul>
                 </form>
                 <p id="next_page" hidden>1</p>
 </div>
+    <br />
+    <br />
+    <br />
+    <br />
 </body>
 </html>

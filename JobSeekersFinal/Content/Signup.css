@@ -1,5 +1,4 @@
 
-* {margin: 0; padding: 0;}
 html {
 	height: 100%;
 }
@@ -57,4 +56,8 @@ body {
 	font-size: 13px;
 }
 
+
+#create_account_btn {
+    background-color:lightblue;
+}
 

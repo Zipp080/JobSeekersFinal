@@ -8,9 +8,7 @@ h6 {
     font-weight: 600;
 }
 
-.learn-link {
-    font-size: 2px;
-}
+
 .intro-header {
     padding-top: 10px; 
     padding-bottom: 10px;
@@ -82,11 +80,4 @@ h6 {
     margin-top: 15px;
 }
 
-footer {
-    padding: 20px;
-    background-color: #f8f8f8;
-}
 
-.learn {
-    font-size: 2px;
-}

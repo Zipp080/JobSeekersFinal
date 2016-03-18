@@ -229,6 +229,7 @@ namespace JobSeekersFinal.DataSources
                                                  "phone = @phone, " +
                                                  "title = @title, " +
                                                  "skills = @skills " +
+                                                 //"createdate = @createdate" +
                                                  "WHERE upper(email) = @email";
             using (var cmd = new SqlCommand(query, _connection))
             {
@@ -245,6 +246,7 @@ namespace JobSeekersFinal.DataSources
                                             new SqlParameter("@email", app.Email.ToUpper()),
                                             new SqlParameter("@title", app.DesiredPositions),
                                             new SqlParameter("@skills", app.Skills),
+                                            //new SqlParameter("@createdate", app.CreateDate),
                                         });
 
                 return cmd.ExecuteNonQuery() == 1;

@@ -1,7 +1,5 @@
 ﻿@model JobSeekersFinal.Models.VM_Personality
-@{
-    Layout = "~/Views/Shared/_LandingLayout.cshtml";
-}
+
 
 <head>
     <title>JobSeekers - Personality Quiz</title>
@@ -14,7 +12,7 @@
             <h3 class="fs-subtitle">Step 3</h3>
         </div>
     <questionheading>Question 0/20</questionheading>
-    <p></p><p></p><p></p>
+    <p></p><p></p><p></p><br />
         <ul>
             <li id="li_1">
                 <label class="description">@Model.Q1.Item1</label>
@@ -66,8 +64,7 @@
                 </span>
             </li> 
             <li class="buttons">
-                <br />
-                <input type="hidden" name="form_id" value="1109963" />
+                <p></p><br />
                 <input id="saveForm" class="button_text" type="submit" name="submit" value="Next" onclick="SubmitQuizSection()" />
             </li>
         </ul>

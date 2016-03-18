@@ -1,6 +1,7 @@
 ﻿@{
-    ViewBag.Title = "FrontDash";
+    ViewBag.Title = "Dashboard";
 }
+
 
 <h2></h2>
 <html lang="en">
@@ -28,7 +29,9 @@
             </div>
         </div>
     </nav>
-
+    <div>
+        Welcome to JobSeekers!
+    </div>
     @*Applicant Table*@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <h2 class="sub-header">Applicants</h2>
@@ -66,18 +69,6 @@
                 </tr>
             </tbody>
         </table>
-
-        <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-            </div>
-        </div>
-
 
         @*Right Applicant Bar*@
         <div class="container-fluid">
@@ -119,30 +110,30 @@
                                                     <td>Microsoft Project, Scrum, SQL, HTML, JIRA</td>
                                                 </tr>
                                         </table>
-                                        <div class="row placeholders">
-                                            <div class="col-xs-6 col-sm-3 placeholder">
+                                        <div class="row personalities">
+                                            <div class="col-xs-6 col-sm-3">
                                                 <img src="~/img/powerful1.png" width="200" height="200" class="img-responsive">
                                                 <personality>Power</personality>
                                                 <span class="Power">76</span>
                                             </div>
-                                            <div class="col-xs-6 col-sm-3 placeholder">
+                                            <div class="col-xs-6 col-sm-3">
                                                 <img src="~/img/blue2.png" width="200" height="200" class="img-responsive">
                                                 <personality>Inspirational</personality>
                                                 <span class="Inspirational">25</span>
                                             </div>
-                                            <div class="col-xs-6 col-sm-3 placeholder">
+                                            <div class="col-xs-6 col-sm-3">
                                                 <img src="~/img/green.png" width="200" height="200" class="img-responsive">
                                                 <personality>Balance</personality>
                                                 <span class="Balance" font size="6">21</span>
                                             </div>
-                                            <div class="col-xs-6 col-sm-3 placeholder">
+                                            <div class="col-xs-6 col-sm-3">
                                                 <img src="~/img/yellow2.png" width="200" height="200" class="img-responsive">
                                                 <personality>Analytical</personality>
                                                 <span class="Analytical">35</span>
                                                 <p></p>
                                             </div>
                                         </div>
-
+                                       <p></p>
                                         <div class="thumbnail">
                                             <a href="resume.docx" download>
                                                 <img src="~/img/dlbutton.png" />
@@ -159,8 +150,6 @@
                 </div>
             </div>
 
-
-
             <script>
                 $(document).ready(function () {
                     $("#myTable").tablesorter();
@@ -171,7 +160,6 @@
         </div>
     </div>
 
-        </div>
 </body>
 </html>
 

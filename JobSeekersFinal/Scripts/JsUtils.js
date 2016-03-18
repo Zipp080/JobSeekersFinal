@@ -43,7 +43,8 @@ function SendProfileData() {
     phone : $("#new_app_phone").val(),
     email : $("#new_app_email").val(),
     positions : $("#new_app_positions").val(),
-    skills : $("#new_app_skills").val()
+    skills: $("#new_app_skills").val(),
+    //createdate: $("#new_app_createdate").val(),
     }
 
     // Store for sending with the Personality Quiz results, to know who to save for.

@@ -1,6 +1,5 @@
 body
 {
-	background:#fffff;
 	font-family: montserrat;
 	font-size:small;
 	margin:8px 0 16px;
@@ -247,11 +246,13 @@ textarea.medium
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	margin-bottom: 10px;
-	width: 90%;
+	width: 20%;
 	box-sizing: border-box;
 	font-family: montserrat;
 	color: #2C3E50;
 	font-size: 13px;
+    background-color:lightblue;
+
 }
 
 questionheading{
