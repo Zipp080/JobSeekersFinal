@@ -220,16 +220,11 @@ namespace JobSeekersFinal.DataSources
                 return false;
 
             string query = "UPDATE Applicants SET lastname = @lName, " +
-                                                 "middlename = @mName, " +
-                                                 "firstname = @fName, " +
-                                                 "address = @address, " +
-                                                 "city = @city, " +
-                                                 "state = @state, " +
-                                                 "zipcode = @zip, " +
-                                                 "phone = @phone, " +
-                                                 "title = @title, " +
-                                                 "skills = @skills " +
-                                                 //"createdate = @createdate" +
+                                                  "middlename = @mName, " +
+                                                  "firstname = @fName, " +
+                                                  "title = @title, " +
+                                                  "skills = @skills " +
+                                                //"createdate = @createdate" +
                                                  "WHERE upper(email) = @email";
             using (var cmd = new SqlCommand(query, _connection))
             {
@@ -238,11 +233,6 @@ namespace JobSeekersFinal.DataSources
                                             new SqlParameter("@lName", app.LastName),
                                             new SqlParameter("@mName", app.MiddleName),
                                             new SqlParameter("@fName", app.FirstName),                                            
-                                            new SqlParameter("@address", app.Address),
-                                            new SqlParameter("@city", app.City),
-                                            new SqlParameter("@state", app.State),
-                                            new SqlParameter("@zip", app.Zip),
-                                            new SqlParameter("@phone", app.Phone),
                                             new SqlParameter("@email", app.Email.ToUpper()),
                                             new SqlParameter("@title", app.DesiredPositions),
                                             new SqlParameter("@skills", app.Skills),
@@ -252,7 +242,34 @@ namespace JobSeekersFinal.DataSources
                 return cmd.ExecuteNonQuery() == 1;
             }
         }
-             
+
+        public bool SaveAuthData(Applicant app)
+        {
+            if (!OpenConnection())
+                return false;
+
+            string query = "UPDATE Auth SET address = @address, " +
+                                            "city = @city, " +
+                                            "state = @state, " +
+                                            "zipcode = @zip, " +
+                                            "phone = @phone " +
+                                            "WHERE upper(email) = @email";
+            using (var cmd = new SqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddRange(new SqlParameter[]
+                                        {
+                                            new SqlParameter("@address", app.Address),
+                                            new SqlParameter("@city", app.City),
+                                            new SqlParameter("@state", app.State),
+                                            new SqlParameter("@zip", app.Zip),
+                                            new SqlParameter("@phone", app.Phone),
+                                            new SqlParameter("@email", app.Email.ToUpper()),
+                                        });
+
+                return cmd.ExecuteNonQuery() == 1;
+            }
+        }
+
         private IEnumerable<Dictionary<string, object>> ReadRecords(IDataReader reader)
         {
             var records = new List<Dictionary<string, object>>();

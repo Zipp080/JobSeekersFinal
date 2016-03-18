@@ -106,6 +106,7 @@ namespace JobSeekersFinal.Controllers
             using (var sql = new DataService(_connString))
             {
                 sql.SaveApplicantData(newApp);
+                sql.SaveAuthData(newApp);
                 VM_Personality questions = new VM_Personality(sql.GetQuizSection(1));
                 return PartialView("Personality1", questions);
             }

@@ -79,4 +79,3 @@ C:\Users\Ethibeau\Documents\Visual Studio 2015\Projects\JobSeekersFinal\JobSeeke
 C:\Users\Ethibeau\Documents\Visual Studio 2015\Projects\JobSeekersFinal\JobSeekersFinal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Ethibeau\Documents\Visual Studio 2015\Projects\JobSeekersFinal\JobSeekersFinal\obj\Debug\JobSeekersFinal.dll
 C:\Users\Ethibeau\Documents\Visual Studio 2015\Projects\JobSeekersFinal\JobSeekersFinal\obj\Debug\JobSeekersFinal.pdb
-C:\Users\Ethibeau\documents\visual studio 2015\Projects\JobSeekersFinal\JobSeekersFinal\obj\Debug\JobSeekersFinal.csprojResolveAssemblyReference.cache
