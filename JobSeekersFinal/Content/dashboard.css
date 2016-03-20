@@ -4,6 +4,7 @@ body {
   position: fixed;
   top: 0px;
   left: 1px;
+
 }
 
 .sub-header {
@@ -13,14 +14,12 @@ body {
 
 .navbar-fixed-top {
   border: 0;
+  background-color: #3D3D3D
 }
 
 
 .sidebar {
-  display: none;
-}
-@media (min-width: 768px) {
-  .sidebar {
+    display: none;
     position: fixed;
     top: 51px;
     bottom: 0;
@@ -31,44 +30,45 @@ body {
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #f5f5f5;
+    background-color: #989898;
     border-right: 1px solid #eee;
-  }
 }
 
 .main {
-  padding: 20px;
-}
-@media (min-width: 1000px) {
-  .main {
-    position: absolute;
-    padding-right: 0px;
-    padding-left: 10px;
-    width: 1300px;
-  }
+    padding: 100px;
+    position: relative;
+    margin-left: -90px;
+    margin-right: 60px;
+    padding-right: 29px;
+    padding-left: -10px;
+    width: 1413px;
+
 }
 
 .placeholder {
   margin-bottom: 20px;
+
 }
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+
 }
 
 /* table */
 table.tablesorter {
 	font-family:arial;
 	background-color: #CDCDCD;
-	font-size: 12pt;
+	font-size: 17pt;
 	width: 116%;
 	text-align: left;
+
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
 	background-color: #e6EEEE;
 	border: 1px solid #FFF;
 	font-size: 12pt;
-	padding: 4px;
+	padding: 12px;
 }
 table.tablesorter thead tr .header {
 	background-image: url(/img/bg.gif);
@@ -110,8 +110,7 @@ background-color: #8dbdd8;
 
 .table-user-information > tbody > tr > td {
     border-top: 0;
-     width: 200px;
-
+    width: 200px;
 }
 
 .panel-body {
@@ -120,9 +119,17 @@ background-color: #8dbdd8;
     height: 750px;
 }
 
+.panel {
+    background-color: #e6EEEE;
+}
+
 .applicantbox {
     margin-left:20px;
     width: 550px;
+}
+
+.panel-heading {
+     background-color: #e6EEEE;
 }
 
 .applicantpic {
@@ -198,6 +205,7 @@ personality {
 
 h3 {
    margin-right: -50px;
+
 }
 
 
