@@ -1,8 +1,5 @@
-﻿.get-started-link, 
-.learn,
-.employerlogin {
-    font-family: montserrat;
-    font-weight: 600;
+﻿.navbar-brand {
+ 
 }
 
 .footer {
@@ -15,6 +12,10 @@
     position:absolute;
     top:40px;
     padding-top:0px;
+    padding-bottom:10px;
+}
+
+.employersignup{
     padding-bottom:30px;
 }
 
