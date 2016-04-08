@@ -1049,9 +1049,7 @@
     <Content Include="Views\Home\HowDoesItWork.cshtml" />
     <Content Include="Views\Home\EmployerLogin.cshtml" />
     <Content Include="Views\Home\Sales.cshtml" />
-    <Content Include="..\..\..\..\..\Desktop\EmployerHelp.cshtml">
-      <Link>Views\Home\EmployerHelp.cshtml</Link>
-    </Content>
+    <Content Include="Views\Home\EmployerHelp.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
