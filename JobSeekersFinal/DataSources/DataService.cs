@@ -51,6 +51,20 @@ namespace JobSeekersFinal.DataSources
             }
         }
 
+        public int GetAuthType(string email)
+        {
+            if (!OpenConnection() || string.IsNullOrWhiteSpace(email))
+                return -1;
+
+            string query = "SELECT Type FROM Auth WHERE upper(email) = upper(@email)";
+            using (var cmd = new SqlCommand(query, _connection))
+            {
+                cmd.Parameters.Add(new SqlParameter("@email", email.ToUpper()));
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+
         /// <summary>
         /// Confirm email/password match a database entry
         /// </summary>
@@ -269,6 +283,8 @@ namespace JobSeekersFinal.DataSources
                 return cmd.ExecuteNonQuery() == 1;
             }
         }
+
+
 
         private IEnumerable<Dictionary<string, object>> ReadRecords(IDataReader reader)
         {

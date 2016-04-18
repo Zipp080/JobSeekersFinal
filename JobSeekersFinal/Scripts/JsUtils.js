@@ -31,40 +31,40 @@
 function SendProfileData() {
 
     var jsonData = {
-    firstName : $("#new_app_first_name").val(),
-    middleName : $("#new_app_middle_name").val(),
-    lastName : $("#new_app_last_name").val(),
-    street : $("#new_app_street").val(),
-    city : $("#new_app_city").val(),
-    state : $("#new_app_state").val(),
-    zip : $("#new_app_zip").val(),
-    phone : $("#new_app_phone").val(),
-    email : $("#new_app_email").val(),
-    positions : $("#new_app_positions").val(),
-    skills: $("#new_app_skills").val(),
+    FirstName : $("#new_app_first_name").val(),
+    MiddleName : $("#new_app_middle_name").val(),
+    LastName : $("#new_app_last_name").val(),
+    Street : $("#new_app_street").val(),
+    City : $("#new_app_city").val(),
+    State : $("#new_app_state").val(),
+    Zip : $("#new_app_zip").val(),
+    Phone : $("#new_app_phone").val(),
+    Email : $("#new_app_email").val(),
+    Positions : $("#new_app_positions").val(),
+    Skills: $("#new_app_skills").val(),
     //createdate: $("#new_app_createdate").val(),
     }
 
     // Store for sending with the Personality Quiz results, to know who to save for.
-    window.emailInProgress = jsonData.email;
+    window.emailInProgress = jsonData.Email;
 
-    if (jsonData.firstName.length == 0 ||
-        jsonData.lastName.length == 0 ||
-        jsonData.middleName.length == 0 ||
-        jsonData.street.length == 0 ||
-        jsonData.city.length == 0 ||
-        jsonData.state.length == 0 ||
-        jsonData.zip.length == 0 ||
-        jsonData.phone.length == 0 ||
-        jsonData.email.length == 0 ||
-        jsonData.positions.length == 0) {
+    if (jsonData.FirstName.length == 0 ||
+        jsonData.LastName.length == 0 ||
+        jsonData.MiddleName.length == 0 ||
+        jsonData.Street.length == 0 ||
+        jsonData.City.length == 0 ||
+        jsonData.State.length == 0 ||
+        jsonData.Zip.length == 0 ||
+        jsonData.Phone.length == 0 ||
+        jsonData.Email.length == 0 ||
+        jsonData.Positions.length == 0) {
         alert("Please fill in all fields with data before proceeding.");
         return;
     }
 
     $.ajax({
         url: window.location.origin + "/Home/Personality1",
-        contentType: "application/html",
+        contentType: "application/json",
         data: JSON.stringify(jsonData),
         success: function (result) {
             $("#form_container").html(result);
@@ -106,4 +106,57 @@ function SubmitQuizSection() {
             $("#form_container").html(result);
         }
     });
+}
+
+function ValidateLogin() {
+
+    var info = {
+        UserEmail: $("#email_form").val(),
+        Password: $("#password_form").val(),
+    }
+
+    $.ajax({
+        url: window.location.origin + "/Home/Login?email=" + info.UserEmail + "&password=" + info.Password,
+        contentType: "application/json",
+        success: function (result) {
+            if (result.Result) {
+                if (result.AuthType === 2) {
+                    window.location = window.location.origin + "/Home/Dashboard?authType=" + result.AuthType;
+                }
+                else {
+                    window.location = window.location.origin + "/Home/Dashboard?authType=" + result.AuthType + "&email=" + info.UserEmail;
+                }
+                
+            }
+            else {
+                alert("Unable to verify your account.  Please check your information or create a new account.");
+            }
+        }
+    });
+}
+
+function LoadProfile(email) {
+
+    $.ajax({
+        url: window.location.origin + "/Home/DashboardProfile?email=" + email,
+        contentType: "application/text",
+        success: function (data) {
+            if (!data.Result) {
+                alert("Failed to load profile data!");
+                return;
+            }
+
+            $("#profile-title").text(data.Title);
+            $("#profile-name").text(data.Name);
+            $("#profile-address").text(data.Address);
+            $("#profile-phone").text(data.Phone);
+            $("#profile-skills").text(data.Skills);
+            $("#profile-email").attr("href", "mailto:" + data.Email);
+            $("#profile-power").text(data.Power);
+            $("#profile-inspirational").text(data.Inspirational);
+            $("#profile-balance").text(data.Balance);
+            $("#profile-analytical").text(data.Analytical);                
+        }
+    })
+
 }

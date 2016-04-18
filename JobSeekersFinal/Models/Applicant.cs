@@ -28,20 +28,45 @@ namespace JobSeekersFinal.Models
 
         public void SetData(Dictionary<string, object> data)
         {
-            FirstName = data["firstName"].ToString();
-            MiddleName = data["middleName"].ToString();
-            LastName = data["lastName"].ToString();
-            Address = data["street"].ToString();
-            City = data["city"].ToString();
-            State = data["state"].ToString();
-            Zip = Convert.ToInt32(data["zip"]);
-            Phone = data["phone"].ToString();
-            Email = data["email"].ToString();
-            DesiredPositions = data["positions"].ToString();
-            Skills = data["skills"].ToString();
+            if (data.ContainsKey("FirstName"))
+                FirstName = data["FirstName"].ToString();
+
+            if (data.ContainsKey("MiddleName"))
+                MiddleName = data["MiddleName"].ToString();
+
+            if (data.ContainsKey("LastName"))
+                LastName = data["LastName"].ToString();
+
+            if (data.ContainsKey("Street"))
+                Address = data["Street"].ToString();
+
+            if (data.ContainsKey("City"))
+                City = data["City"].ToString();
+
+            if (data.ContainsKey("State"))
+                State = data["State"].ToString();
+
+            if (data.ContainsKey("Zip"))
+                Zip = Convert.ToInt32(data["Zip"]);
+
+            if (data.ContainsKey("Phone"))
+                Phone = data["Phone"].ToString();
+
+            if (data.ContainsKey("Email"))
+                Email = data["Email"].ToString();
+
+            if (data.ContainsKey("Positions"))
+                DesiredPositions = data["Positions"].ToString();
+            else if (data.ContainsKey("Title"))
+                DesiredPositions = data["Title"].ToString();
+
+            if (data.ContainsKey("Skills"))
+                Skills = data["Skills"].ToString();
             //CreateDate = data["creatdate"].ToString();
             //ResumePath = data["resumePath"].ToString();
         }
+
+
 
         public void SetAnswers(int[] answers, int quizPageNum)
         {

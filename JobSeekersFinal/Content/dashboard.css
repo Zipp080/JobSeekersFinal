@@ -150,6 +150,8 @@ applicantname {
     font-size: xx-large;
     top: 120px;
     text-align:center;
+    padding-left:2em;
+    max-width:300px;
 }
 
 personality {

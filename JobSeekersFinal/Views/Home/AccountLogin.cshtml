@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "EmployerLogin";
+    ViewBag.Title = "AccountLogin";
 }
 @{
     Layout = "~/Views/Shared/_LandingLayout.cshtml";
@@ -8,7 +8,7 @@
 <html>
 
 <head>
-    <title>JobSeekers - Employer Login</title>
+    <title>JobSeekers - Account Login</title>
     <link rel="stylesheet" href="~/Content/Signup.css">
 </head>
 
@@ -18,13 +18,16 @@
    <div class="msform">
        <form class="msform">
            <fieldset>
-               <h2 class="fs-title">Employer Login</h2>
+               <h2 class="fs-title">Account Login</h2>
                    <input type="text" id="email_form" placeholder="Email" />
                    <input type="password" id="password_form" placeholder="Password" />
-                   <input id="create_account_btn" class="button_text" type="button" value="Login" onclick="VerifyNewAccount();" />
+                   <input id="create_account_btn" class="button_text" type="button" value="Login" onclick="ValidateLogin();" />
            </fieldset>
        </form>
    </div>
+    <div class="employersignup" style="font-size:15px">
+        Don't have an account yet? Sign up <a href="Signup">here</a>.
+    </div>
    
 </body>
 </html>

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model JobSeekersFinal.Models.Applicant[]
+
+@{
     ViewBag.Title = "Dashboard";
 }
 
@@ -44,27 +46,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Eric</td>
-                    <td>Thibeau</td>
-                    <td>Project Manager</td>
-                    <td>Laguna Niguel</td>
-                    <td>CA</td>
-                </tr>
-                <tr>
-                    <td>Tony</td>
-                    <td>Stark</td>
-                    <td>IronMan</td>
-                    <td>Malibu</td>
-                    <td>CA</td>
-                </tr>
-                <tr>
-                    <td>Steve</td>
-                    <td>Rogers</td>
-                    <td>Captain America</td>
-                    <td>New York City</td>
-                    <td>NY</td>
-                </tr>
+                @foreach (JobSeekersFinal.Models.Applicant app in Model)
+                {
+                    <tr>
+                        <td onclick="LoadProfile('@app.Email')">@app.FirstName</td>
+                        <td onclick="LoadProfile('@app.Email')">@app.LastName</td>
+                        <td onclick="LoadProfile('@app.Email')">@app.DesiredPositions</td>
+                        <td onclick="LoadProfile('@app.Email')">@app.City</td>
+                        <td onclick="LoadProfile('@app.Email')">@app.State</td>
+                    </tr>
+                }
             </tbody>
         </table>
 
@@ -82,52 +73,52 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="applicantpic" align="center"> <img alt="User Pic" src="~/img/ProfilePics/Avatar4.png" class="img-circle img-responsive"> </div>
-                                    <applicantname>Eric Robert <br />Thibeau</applicantname>
+                                    <applicantname id="profile-name">Eric Robert <br />Thibeau</applicantname>
                                     <div class="applicantinfo">
                                         <br>
                                         <table class="table table-user-information">
                                             <tbody>
                                                 <tr>
                                                     <td>Title:</td>
-                                                    <td>Project Manager</td>
+                                                    <td id="profile-title">Project Manager</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Address:</td>
-                                                    <td>43 Glen Cv, Laguna Niguel, CA 92677</td>
+                                                    <td id="profile-address">43 Glen Cv, Laguna Niguel, CA 92677</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Email</td>
-                                                    <td><a href="mailto:ericthibeau@gmail.com">Click to Email</a></td>
+                                                    <td><a id="profile-email" href="mailto:ericthibeau@gmail.com">Click to Email</a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Phone Number</td>
-                                                    <td>555-555-5555<br>
+                                                    <td id="profile-phone">555-555-5555<br>
                                                 </tr>
                                                 <tr>
                                                     <td>Skills</td>
-                                                    <td>Microsoft Project, Scrum, SQL, HTML, JIRA</td>
+                                                    <td id="profile-skills">Microsoft Project, Scrum, SQL, HTML, JIRA</td>
                                                 </tr>
                                         </table>
                                         <div class="row personalities">
                                             <div class="col-xs-6 col-sm-3">
                                                 <img src="~/img/powerful1.png" width="200" height="200" class="img-responsive">
                                                 <personality>Power</personality>
-                                                <span class="Power">76</span>
+                                                <span class="Power" id="profile-power">76</span>
                                             </div>
                                             <div class="col-xs-6 col-sm-3">
                                                 <img src="~/img/blue2.png" width="200" height="200" class="img-responsive">
                                                 <personality>Inspirational</personality>
-                                                <span class="Inspirational">25</span>
+                                                <span class="Inspirational" id="profile-inspirational">25</span>
                                             </div>
                                             <div class="col-xs-6 col-sm-3">
                                                 <img src="~/img/green.png" width="200" height="200" class="img-responsive">
                                                 <personality>Balance</personality>
-                                                <span class="Balance" font size="6">21</span>
+                                                <span class="Balance" font size="6" id="profile-balance">21</span>
                                             </div>
                                             <div class="col-xs-6 col-sm-3">
                                                 <img src="~/img/yellow2.png" width="200" height="200" class="img-responsive">
                                                 <personality>Analytical</personality>
-                                                <span class="Analytical">35</span>
+                                                <span class="Analytical" id="profile-analytical">35</span>
                                                 <p></p>
                                             </div>
                                         </div>

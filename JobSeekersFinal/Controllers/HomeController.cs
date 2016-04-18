@@ -17,14 +17,43 @@ namespace JobSeekersFinal.Controllers
     {
 
         private static readonly string _connString = ConfigurationManager.ConnectionStrings["appDb"].ConnectionString;
+        private const int _appAuthType = 1;
+        private const int _employerAuthType = 2;
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Dashboard()
+
+        public ActionResult Dashboard(int authType, string email)
         {
-            return View();
+            if (authType == _employerAuthType)
+                return View("Dashboard", GetApplicants());
+            
+            using (var sql = new DataService(_connString))
+            {
+                var applicant = sql.GetRecords($"Select * from applicants where upper(Email) = upper('{email}')");
+                var app = new Applicant();
+                app.SetData(applicant.FirstOrDefault());
+                return View("ApplicantProfile", app);
+            }
+        }
+
+        private Applicant[] GetApplicants()
+        {
+            using (var sql = new DataService(_connString))
+            {
+                List<Applicant> applicants = new List<Applicant>();
+                var apps = sql.GetRecords("SELECT au.*, app.LastName, app.FirstName, app.Title FROM Applicants app JOIN Auth au on app.email = au.email where au.type = 1");
+                foreach (var app in apps)
+                {
+                    var appToAdd = new Applicant();
+                    appToAdd.SetData(app);
+                    applicants.Add(appToAdd);
+                }
+                return applicants.ToArray();
+            }
         }
 
         public ActionResult About()
@@ -45,23 +74,78 @@ namespace JobSeekersFinal.Controllers
             return View();
         }
 
+        private enum ScoreCategory
+        {
+            Power,
+            Inspirational,
+            Balance,
+            Analytical
+        }
+
+        public JsonResult DashboardProfile(string email)
+        {
+            using (var sql = new DataService(_connString))
+            {
+                var appRecord = sql.GetRecords($"SELECT au.*, app.Id as appId, app.LastName, app.FirstName, app.MiddleName, app.Title, app.Skills FROM Applicants app JOIN Auth au on app.email = au.email where upper(au.email) = upper('{email}')").FirstOrDefault();
+                if (appRecord == null)
+                {
+                    return JsonAllowGet(new
+                    {
+                        Result = false
+                    });
+                }
+                else
+                {
+                    var answerResults = sql.GetRecords($"SELECT ans.* FROM AnswerScore ans join ApplicantsAnswers aa on ans.AnswerId = aa.AnswerId join applicants a on aa.applicantid = a.id where a.id = {Convert.ToInt32(appRecord["appId"])}");
+
+                    return JsonAllowGet(new
+                    {
+                        Result = true,
+                        Name = $"{appRecord["FirstName"]} {appRecord["MiddleName"]} {appRecord["LastName"]}",
+                        Title = appRecord["Title"].ToString(),
+                        Address = $"{appRecord["Address"]}, {appRecord["City"]}, {appRecord["State"]} {appRecord["Zipcode"]}",
+                        Phone = appRecord["Phone"].ToString(),
+                        Email = email,
+                        Skills = appRecord["Skills"].ToString(),
+                        Power = answerResults.Where(r => Convert.ToInt32(r["CategoryID"]) == (int)ScoreCategory.Power).Sum(r => Convert.ToInt32(r["Score"])),
+                        Inspirational = answerResults.Where(r => Convert.ToInt32(r["CategoryID"]) == (int)ScoreCategory.Inspirational).Sum(r => Convert.ToInt32(r["Score"])),
+                        Balance = answerResults.Where(r => Convert.ToInt32(r["CategoryID"]) == (int)ScoreCategory.Balance).Sum(r => Convert.ToInt32(r["Score"])),
+                        Analytical = answerResults.Where(r => Convert.ToInt32(r["CategoryID"]) == (int)ScoreCategory.Analytical).Sum(r => Convert.ToInt32(r["Score"]))
+                    });
+                }
+            }
+        }
+
         public ActionResult HowDoesItWork()
         {
 
             return View();
         }
 
-        public ActionResult ApplicantLogin()
-        {
+       
 
+        public ActionResult AccountLogin()
+        {
             return View();
         }
 
-        public ActionResult EmployerLogin()
-        {
-
-            return View();
+        public ActionResult Login(string email, string password)
+        {            
+            using (var sql = new DataService(_connString))
+            {
+                bool success = sql.VerifyAccount(email, password);
+                if (success)
+                {
+                    return JsonAllowGet(new { Result = success, AuthType = sql.GetAuthType(email) });
+                }
+                else
+                {
+                    return JsonAllowGet(new { Result = success });
+                }
+            }
         }
+
+
         public ActionResult Sales()
         {
 
@@ -100,7 +184,7 @@ namespace JobSeekersFinal.Controllers
         public ActionResult Personality1()
         {
             var jsonData = JsonConvert.DeserializeObject<Dictionary<string, object>>(Request.QueryString[0]);
-            var newApp = ApplicantData.GetApplicantData(jsonData["email"].ToString());
+            var newApp = ApplicantData.GetApplicantData(jsonData["Email"].ToString());
             newApp.SetData(jsonData);
 
             using (var sql = new DataService(_connString))
@@ -121,7 +205,7 @@ namespace JobSeekersFinal.Controllers
             var jsonData = JsonConvert.DeserializeObject<Dictionary<string, object>>(Request.QueryString[0]);
             using (var sql = new DataService(_connString))
             {
-                sql.SaveQuizSection(ConvertJArrayToIntArray((JArray)jsonData["answerArray"]), jsonData["email"].ToString(), 1);
+                sql.SaveQuizSection(ConvertJArrayToIntArray((JArray)jsonData["answerArray"]), jsonData["Email"].ToString(), 1);
                 VM_Personality questions = new VM_Personality(sql.GetQuizSection(2));
                 return PartialView("Personality2", questions);
             }
@@ -208,6 +292,12 @@ namespace JobSeekersFinal.Controllers
                 x.Add(Convert.ToInt32(val));
             }
             return x.ToArray();
+        }
+
+
+        private JsonResult JsonAllowGet(object json)
+        {
+            return Json(json, JsonRequestBehavior.AllowGet);
         }
     }
 }
