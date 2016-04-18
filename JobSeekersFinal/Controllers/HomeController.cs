@@ -26,14 +26,14 @@ namespace JobSeekersFinal.Controllers
         }
 
 
-        public ActionResult Dashboard(int authType, string email)
+        public ActionResult Dashboard(int authType, string Email)
         {
             if (authType == _employerAuthType)
                 return View("Dashboard", GetApplicants());
             
             using (var sql = new DataService(_connString))
             {
-                var applicant = sql.GetRecords($"Select * from applicants where upper(Email) = upper('{email}')");
+                var applicant = sql.GetRecords($"Select * from applicants where upper(Email) = upper('{Email}')");
                 var app = new Applicant();
                 app.SetData(applicant.FirstOrDefault());
                 return View("ApplicantProfile", app);
@@ -82,11 +82,11 @@ namespace JobSeekersFinal.Controllers
             Analytical
         }
 
-        public JsonResult DashboardProfile(string email)
+        public JsonResult DashboardProfile(string Email)
         {
             using (var sql = new DataService(_connString))
             {
-                var appRecord = sql.GetRecords($"SELECT au.*, app.Id as appId, app.LastName, app.FirstName, app.MiddleName, app.Title, app.Skills FROM Applicants app JOIN Auth au on app.email = au.email where upper(au.email) = upper('{email}')").FirstOrDefault();
+                var appRecord = sql.GetRecords($"SELECT au.*, app.Id as appId, app.LastName, app.FirstName, app.MiddleName, app.Title, app.Skills FROM Applicants app JOIN Auth au on app.email = au.email where upper(au.email) = upper('{Email}')").FirstOrDefault();
                 if (appRecord == null)
                 {
                     return JsonAllowGet(new
@@ -105,7 +105,7 @@ namespace JobSeekersFinal.Controllers
                         Title = appRecord["Title"].ToString(),
                         Address = $"{appRecord["Address"]}, {appRecord["City"]}, {appRecord["State"]} {appRecord["Zipcode"]}",
                         Phone = appRecord["Phone"].ToString(),
-                        Email = email,
+                        Email = Email,
                         Skills = appRecord["Skills"].ToString(),
                         Power = answerResults.Where(r => Convert.ToInt32(r["CategoryID"]) == (int)ScoreCategory.Power).Sum(r => Convert.ToInt32(r["Score"])),
                         Inspirational = answerResults.Where(r => Convert.ToInt32(r["CategoryID"]) == (int)ScoreCategory.Inspirational).Sum(r => Convert.ToInt32(r["Score"])),
@@ -129,14 +129,14 @@ namespace JobSeekersFinal.Controllers
             return View();
         }
 
-        public ActionResult Login(string email, string password)
+        public ActionResult Login(string Email, string password)
         {            
             using (var sql = new DataService(_connString))
             {
-                bool success = sql.VerifyAccount(email, password);
+                bool success = sql.VerifyAccount(Email, password);
                 if (success)
                 {
-                    return JsonAllowGet(new { Result = success, AuthType = sql.GetAuthType(email) });
+                    return JsonAllowGet(new { Result = success, AuthType = sql.GetAuthType(Email) });
                 }
                 else
                 {
@@ -161,10 +161,10 @@ namespace JobSeekersFinal.Controllers
         /// Presents applicant data entry forms.
         /// </summary>
         /// <returns></returns>
-        public ActionResult NewApplicantProfile(string email)
+        public ActionResult NewApplicantProfile(string Email)
         {
-            ApplicantData.StoreApplicantData(email.ToUpper(), new Applicant());
-            ViewBag.EmailAddress = email.Replace("@", "%40");
+            ApplicantData.StoreApplicantData(Email.ToUpper(), new Applicant());
+            ViewBag.EmailAddress = Email.Replace("@", "%40");
             return View();
         }
 
@@ -205,7 +205,7 @@ namespace JobSeekersFinal.Controllers
             var jsonData = JsonConvert.DeserializeObject<Dictionary<string, object>>(Request.QueryString[0]);
             using (var sql = new DataService(_connString))
             {
-                sql.SaveQuizSection(ConvertJArrayToIntArray((JArray)jsonData["answerArray"]), jsonData["Email"].ToString(), 1);
+                sql.SaveQuizSection(ConvertJArrayToIntArray((JArray)jsonData["answerArray"]), jsonData["email"].ToString(), 1);
                 VM_Personality questions = new VM_Personality(sql.GetQuizSection(2));
                 return PartialView("Personality2", questions);
             }
@@ -261,7 +261,7 @@ namespace JobSeekersFinal.Controllers
         /// <param name="email">applicant email</param>
         /// <param name="password">applicant password</param>
         /// <returns></returns>
-        public ActionResult AddNewAccount(string email, string password)
+        public ActionResult AddNewAccount(string Email, string password)
         {
             var queryParams = JsonConvert.DeserializeObject<Dictionary<string, string>>(Request.QueryString[0]);
             using (var sql = new DataSources.DataService(_connString))

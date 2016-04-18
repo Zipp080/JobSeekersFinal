@@ -51,15 +51,15 @@ namespace JobSeekersFinal.DataSources
             }
         }
 
-        public int GetAuthType(string email)
+        public int GetAuthType(string Email)
         {
-            if (!OpenConnection() || string.IsNullOrWhiteSpace(email))
+            if (!OpenConnection() || string.IsNullOrWhiteSpace(Email))
                 return -1;
 
-            string query = "SELECT Type FROM Auth WHERE upper(email) = upper(@email)";
+            string query = "SELECT Type FROM Auth WHERE upper(Email) = upper(@Email)";
             using (var cmd = new SqlCommand(query, _connection))
             {
-                cmd.Parameters.Add(new SqlParameter("@email", email.ToUpper()));
+                cmd.Parameters.Add(new SqlParameter("@Email", Email.ToUpper()));
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
@@ -71,15 +71,15 @@ namespace JobSeekersFinal.DataSources
         /// <param name="email"></param>
         /// <param name="password"></param>
         /// <returns>true: user exists, false: user or password not found.</returns>
-        public bool VerifyAccount(string email, string password)
+        public bool VerifyAccount(string Email, string password)
         {
             if (!OpenConnection() || string.IsNullOrWhiteSpace(password))
                 return false;
 
-            string query = "SELECT Password FROM Auth WHERE upper(email) = upper(@email)";
+            string query = "SELECT Password FROM Auth WHERE upper(Email) = upper(@Email)";
             using (var cmd = new SqlCommand(query, _connection))
             {
-                cmd.Parameters.Add(new SqlParameter("@email", email.ToUpper()));
+                cmd.Parameters.Add(new SqlParameter("@Email", Email.ToUpper()));
                 string pw = cmd.ExecuteScalar().ToString().Trim();
                 return string.Equals(pw, password);
             }
@@ -91,27 +91,27 @@ namespace JobSeekersFinal.DataSources
         /// <param name="email"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public bool CreateAccount(string email, string password)
+        public bool CreateAccount(string Email, string password)
         {
-            if (!OpenConnection() || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            if (!OpenConnection() || string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(password))
                 return false;
 
-            string testEmailQuery = "SELECT Password FROM Auth WHERE upper(email) = @email";
-            string insertNewAccountQuery = "INSERT into Auth (email, [password]) " +
-                                           "values (@email, @password); " +
-                                           "INSERT into Applicants (email) values (@email)";
+            string testEmailQuery = "SELECT Password FROM Auth WHERE upper(Email) = @Email";
+            string insertNewAccountQuery = "INSERT into Auth (Email, [password]) " +
+                                           "values (@Email, @password); " +
+                                           "INSERT into Applicants (Email) values (@Email)";
 
             try
             {
                 using (var cmd = new SqlCommand(testEmailQuery, _connection))
                 {
-                    cmd.Parameters.Add(new SqlParameter("@email", email.ToUpper()));
+                    cmd.Parameters.Add(new SqlParameter("@Email", Email.ToUpper()));
                     if (cmd.ExecuteScalar() != null)
                         throw new Exception("Account with that email already exists in the database.");
 
                     using (var insertCmd = new SqlCommand(insertNewAccountQuery, _connection))
                     {
-                        insertCmd.Parameters.Add(new SqlParameter("@email", email.ToUpper()));
+                        insertCmd.Parameters.Add(new SqlParameter("@Email", Email.ToUpper()));
                         insertCmd.Parameters.Add(new SqlParameter("@password", password));
                         return insertCmd.ExecuteNonQuery() == 2;
                     }
@@ -174,7 +174,7 @@ namespace JobSeekersFinal.DataSources
         /// <param name="email"></param>
         /// <param name="section"></param>
         /// <returns></returns>
-        public bool SaveQuizSection(int[] answers, string email, int section)
+        public bool SaveQuizSection(int[] answers, string Email, int section)
         {
             if (!OpenConnection())
                 return false;
@@ -187,7 +187,7 @@ namespace JobSeekersFinal.DataSources
             int? appID;
             using (var idCmd = new SqlCommand(appQuery, _connection))
             {
-                idCmd.Parameters.Add(new SqlParameter("@email", email.ToUpper()));
+                idCmd.Parameters.Add(new SqlParameter("@email", Email.ToUpper()));
                 appID = (int?)idCmd.ExecuteScalar() ?? -1;
             }
 
@@ -267,7 +267,7 @@ namespace JobSeekersFinal.DataSources
                                             "state = @state, " +
                                             "zipcode = @zip, " +
                                             "phone = @phone " +
-                                            "WHERE upper(email) = @email";
+                                            "WHERE upper(Email) = @Email";
             using (var cmd = new SqlCommand(query, _connection))
             {
                 cmd.Parameters.AddRange(new SqlParameter[]
@@ -277,7 +277,7 @@ namespace JobSeekersFinal.DataSources
                                             new SqlParameter("@state", app.State),
                                             new SqlParameter("@zip", app.Zip),
                                             new SqlParameter("@phone", app.Phone),
-                                            new SqlParameter("@email", app.Email.ToUpper()),
+                                            new SqlParameter("@Email", app.Email.ToUpper()),
                                         });
 
                 return cmd.ExecuteNonQuery() == 1;
