@@ -1,15 +1,16 @@
 body {
   padding-top: 50px;
-  position: fixed;
   top: 0px;
   left: 1px;
+  position: absolute;
+  
 }
 
 .panel-body {
     font-size: 20em;
     width: 500px;
     height: 750px;
-    position:center;
+    position:static;
 }
 
 .applicantbox {
@@ -51,8 +52,13 @@ applicantname {
     right:-100px;
     display: inline-block;
 }
-
-h3 {
-   margin-right: -50px;
+.table {border-spacing: 5px; 
+        padding: 5px;
+        text-align: left;
+        width: 100%;
+}
+.table, td{
+    padding: 5px;
+    text-align: left;
 
 }

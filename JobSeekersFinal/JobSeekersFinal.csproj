@@ -218,10 +218,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Layout.css" />
-    <Content Include="Content\Profile.css" />
+    <Content Include="Content\Profile3.css" />
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\jquery.dataTables.min.css" />
+    <Content Include="Content\Profile.css" />
     <Content Include="Content\Signup.css" />
     <Content Include="Content\NewApplicant.css" />
     <Content Include="favicon.ico" />
@@ -234,14 +235,19 @@
     <Content Include="img\blue2.png" />
     <Content Include="img\bottom.png" />
     <Content Include="img\business-plans.jpg" />
+    <Content Include="img\Business_Incubation_Startup.jpg" />
     <Content Include="img\circle-xxl.png" />
+    <Content Include="img\Company Size.jpg" />
     <Content Include="img\company-culture.jpg" />
+    <Content Include="img\Customer Support.jpg" />
     <Content Include="img\desc.gif" />
     <Content Include="img\dlbutton.png" />
     <Content Include="img\Dressed-Up-Man2.jpg" />
     <Content Include="img\green.png" />
     <Content Include="img\hire-me-sign.jpg" />
     <Content Include="img\Image7.jpg" />
+    <Content Include="img\Job interview.jpg" />
+    <Content Include="img\Job offer.jpg" />
     <Content Include="img\job-seeker-sign.jpg" />
     <Content Include="img\JobSeeker Logo-Blue.png" />
     <Content Include="img\JobSeeker Logo-REd.png" />
@@ -261,6 +267,7 @@
     <Content Include="img\Resume.jpg" />
     <Content Include="img\shadow.gif" />
     <Content Include="img\soft-skills.jpg" />
+    <Content Include="img\Subscription.PNG" />
     <Content Include="img\top.png" />
     <Content Include="img\yellow.png" />
     <Content Include="img\yellow2.png" />
@@ -1047,11 +1054,10 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Home\ApplicationComplete.cshtml" />
-    <Content Include="Views\Home\ApplicantProfile.cshtml" />
     <Content Include="Views\Home\HowDoesItWork.cshtml" />
     <Content Include="Views\Home\AccountLogin.cshtml" />
-    <Content Include="Views\Home\Sales.cshtml" />
     <Content Include="Views\Home\EmployerHelp.cshtml" />
+    <Content Include="Views\Home\ApplicantProfile.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1083,6 +1089,7 @@
     <Content Include="Views\Home\Personality4.cshtml" />
     <Content Include="Views\Shared\_LandingLayout.cshtml" />
     <Content Include="Views\Shared\_InternalLayout.cshtml" />
+    <Content Include="Views\Home\Sales.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

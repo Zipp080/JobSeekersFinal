@@ -4,19 +4,155 @@
     ViewBag.Title = "ApplicantProfile";
 }
 
-<h2></h2>
 <html lang="en">
 
 <head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/JsUtils.js"></script>
     <title>JobSeekers - Profile</title>
-    <link href="~/Content/profile.css" rel="stylesheet">
+    <link href="~/Content/Profile.css" rel="stylesheet">
     <script type="text/javascript" src="~/Scripts/jquery-latest.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.tablesorter.js"></script> 
+    <script type="text/javascript" src="~/Scripts/jquery.tablesorter.js"></script>
+
 </head>
 
 <body>
-    <h1> Welcome, Eric!</h1>
-    @*Top Nav Bar*@
+    
+    <h1>&nbsp;&nbsp; Welcome, @Model.FirstName!</h1>
+
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-xs-5">
+
+                    <img src="~/img/ProfilePics/Avatar4.png" width="200" height="200" alt="User Pic" class="img-circle img-responsive">
+                    <div class="applicantpersonal">
+                        <br />
+                        <p style="font-family:'Arial'; font-size: 2em; font-weight:bold;">Personal Information</p>
+                        <table>
+                            <tr>
+                                <td>Address: </td>
+                                <td>@Model.Address</td>
+                            </tr>
+                            <tr>
+                                <td>City:</td>
+                                <td>@Model.City</td>
+                            </tr>
+                            <tr>
+                                <td>State:</td>
+                                <td>@Model.State</td>
+                            </tr>
+                            <tr>
+                                <td>Zip:</td>
+                                <td>@Model.Zip</td>
+                            </tr>
+                            <tr>
+                                <td>Phone:</td>
+                                <td>@Model.Phone</td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+
+                                <td>@Model.Email</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <a href="~/Home/NewApplicantProfile.cshtml" class="button">Edit</a>
+
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="applicantprofessional">
+
+                        <p style="font-family:'Arial'; font-size: 2em; font-weight: bold;">Professional Information</p>
+                        <table border-spacing 5px>
+                            <tr>
+                                <td>Desired position:</td>
+                                <td>@Model.DesiredPositions</td>
+                            </tr>
+                            <tr>
+                                <td>Skills:</td>
+                                <td>
+                                    <p class="text-justify">
+                                        @Model.Skills
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <a href="~/Home/NewApplicantProfile.cshtml" class="button">Edit</a>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="myresume">
+                        <br />
+                        <br />
+                        <br />
+                        <p style="font-family:'Arial'; font-size: 2em; font-weight: bold;">My resumé</p>
+                        <br />
+                        <button type="submit" onclick="window.open('resume.docx')"><p style="font-size:12px;">Download your resumé</p></button>
+                        <br />
+                        <br />
+                        <form method="POST" action="uploadFile" enctype="multipart/form-data">
+                            <p class="text-left" style="font-size: 13px; font-weight: bold;">Upload a new resumé</p><input type="file" name="file" />
+                        </form>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <button type="button" onclick="deletedata">Delete my Profile</button> 
+                    </div>
+                </div>
+                <div class="col-xs-1"></div>
+                <div class="col-xs-3 offset-col-xs-3">
+                   
+                    <p style="font-family:'Arial'; font-size: 2em; font-weight: bold;" class="text-left">Need help with your application?</p>
+                    <div class="Job hints">
+                        <a href="http://theinterviewguys.com/how-to-make-a-resume-101/">
+                            <img src="~/img/Business_Incubation_Startup.jpg" alt="How to_resume" style="width:210px;height:140px">
+                        </a> <br />
+                    </div>
+                    <p class="text-justify" style="font-size:100%;">Your resumé is one of the most important parts of your job application.</p>
+                    <a href="http://theinterviewguys.com/how-to-make-a-resume-101/"> <p style="font-size:90%;"> <i>How to write a professional resumé</i></p> </a>
+                    <br />
+                    <br />
+                    <br />
+                    <div class="Job hints">
+                        <a href="http://www.forbes.com/sites/jonyoushaei/2014/10/20/12-surprising-job-interview-tips/#1432f1a30069">
+                            <img src="~/img/Job interview.jpg" alt="How to_interview" style="width:210px;height:140px">
+                        </a> <br /> <p class="text-justify" style="font-size:100%;">You’re almost there. Your resume landed you an interview and now it’s time to seal the deal. So what’s the best way to prepare?</p>
+                        <a href="http://www.forbes.com/sites/jonyoushaei/2014/10/20/12-surprising-job-interview-tips/#1432f1a30069"> <p style="font-size:90%;"> <i>12 Surprising Job Interview Tips</i></p> </a>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="Job hints">
+                        <a href="http://money.usnews.com/money/blogs/outside-voices-careers/2013/05/08/11-tips-for-negotiating-your-next-job-offer">
+                            <img src="~/img/Job Offer.jpg" alt="How to_offer" style="width:210px;height:140px">
+                        </a>
+                        <br />
+                        <p class="text-justify" style="font-size:100%;">Got a job offer? Don't shy away from negotiating elements that are important to you. You never know what the outcome will be unless you ask. Are you getting the best possible salary and benefits package?</p>
+                        <a href="http://money.usnews.com/money/blogs/outside-voices-careers/2013/05/08/11-tips-for-negotiating-your-next-job-offer"> <p style="font-size:90%;"> <i>11 Tips for Negotiating Your Next Job Offer</i></p> </a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -30,39 +166,15 @@
                     <li><a href="#">Help</a></li>
                     <li><a href="mailto:webmaster@jobseekers.com">Contact</a></li>
                 </ul>
+
             </div>
         </div>
+
     </nav>
 
-    <div class="applicantpersonal">
-        <ul class="personal">
-            Personal Information
-            <li>Name: @Model.FirstName @Model.MiddleName @Model.LastName</li>
-            <li>Address: @Model.Address</li>
-            <li>City: @Model.City</li>
-            <li>State: @Model.State</li>
-            <li>Zip: @Model.Zip</li>
-            <li>Phone: @Model.Phone</li>
-            <li>Email: @Model.Email</li>
-            <li>Title: @Model.DesiredPositions</li>
-            <li>Skills: @Model.Skills</li>
-
-        </ul>
-    </div>
 
 
-    <br />
-    <br />
-    
-<div class="thumbnail">
-    <a href="resume.docx" download>
-        <img src="~/img/dlbutton.png" />
-    </a>
-    <div class="caption post-content">
-        <h3 style="color:white; font-size:medium">Download Resume</h3>
-    </div>
-</div>
-        
+
 </body>
 </html>
 
