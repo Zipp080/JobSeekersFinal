@@ -238,8 +238,14 @@ namespace JobSeekersFinal.DataSources
                                                   "firstname = @fName, " +
                                                   "title = @title, " +
                                                   "skills = @skills " +
+                                                  "{0}" +
                                                 //"createdate = @createdate" +
                                                  "WHERE upper(email) = @email";
+
+            query = !string.IsNullOrWhiteSpace(app.ResumePath)
+                ? query = string.Format(query, ", resume = @resume ")
+                : query = string.Format(query, "");
+
             using (var cmd = new SqlCommand(query, _connection))
             {
                 cmd.Parameters.AddRange(new SqlParameter[]
@@ -252,6 +258,9 @@ namespace JobSeekersFinal.DataSources
                                             new SqlParameter("@skills", app.Skills),
                                             //new SqlParameter("@createdate", app.CreateDate),
                                         });
+
+                if (!string.IsNullOrWhiteSpace(app.ResumePath))
+                    cmd.Parameters.Add(new SqlParameter("@resume", app.ResumePath));
 
                 return cmd.ExecuteNonQuery() == 1;
             }

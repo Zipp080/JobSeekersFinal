@@ -39,6 +39,8 @@ namespace JobSeekersFinal.Models
 
             if (data.ContainsKey("Street"))
                 Address = data["Street"].ToString();
+            else if (data.ContainsKey("Address"))
+                Address = data["Address"].ToString();
 
             if (data.ContainsKey("City"))
                 City = data["City"].ToString();
@@ -48,6 +50,8 @@ namespace JobSeekersFinal.Models
 
             if (data.ContainsKey("Zip"))
                 Zip = Convert.ToInt32(data["Zip"]);
+            else if (data.ContainsKey("Zipcode"))
+                Zip = Convert.ToInt32(data["Zipcode"]);
 
             if (data.ContainsKey("Phone"))
                 Phone = data["Phone"].ToString();
@@ -62,6 +66,9 @@ namespace JobSeekersFinal.Models
 
             if (data.ContainsKey("Skills"))
                 Skills = data["Skills"].ToString();
+
+            if (data.ContainsKey("Resume"))
+                ResumePath = data["Resume"].ToString();
             //CreateDate = data["creatdate"].ToString();
             //ResumePath = data["resumePath"].ToString();
         }

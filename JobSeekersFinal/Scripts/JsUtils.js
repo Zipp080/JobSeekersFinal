@@ -42,6 +42,7 @@ function SendProfileData() {
     Email : $("#new_app_email").val(),
     Positions : $("#new_app_positions").val(),
     Skills: $("#new_app_skills").val(),
+    Resume: $("#new_app_resume").val(),
     //createdate: $("#new_app_createdate").val(),
     }
 
@@ -62,14 +63,29 @@ function SendProfileData() {
         return;
     }
 
-    $.ajax({
-        url: window.location.origin + "/Home/Personality1",
-        contentType: "application/json",
-        data: JSON.stringify(jsonData),
-        success: function (result) {
-            $("#form_container").html(result);
+    var fileElem = $("#new_app_resume");
+    if (fileElem.val().length > 0) {
+        var xhr = new XMLHttpRequest();
+        var fd = new FormData();
+        fd.append("ResumeFile", fileElem.prop("files")[0]);
+        xhr.open("POST", window.location.origin + "/Home/SubmitResume", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.DONE == xhr.readyState) {
+                $.ajax({
+                    url: window.location.origin + "/Home/Personality1",
+                    contentType: "application/json",
+                    data: JSON.stringify(jsonData),
+                    success: function (result) {
+                        $("#form_container").html(result);
+                    }
+                });
+            }
         }
-    });
+        xhr.send(fd);
+
+    }
+
+    
 }
 
 function SubmitQuizSection() {
@@ -158,5 +174,43 @@ function LoadProfile(email) {
             $("#profile-analytical").text(data.Analytical);                
         }
     })
+
+}
+
+function FilterDashboard(titleString, skillsString) {
+
+    var hides = [];
+
+    var titleElems = $.makeArray($("#myTable").find("tr #app-title"));
+
+    titleElems.map(function (i) {
+        var name = i.attributes.name.value;
+        if (i.innerText.indexOf(titleString) == -1) {
+            hides.push(document.getElementById("app-" + name));
+        }
+        else {
+            document.getElementById("app-" + name).hidden = false;
+        }      
+    });
+
+    var skillElems = $.makeArray($("#myTable").find("tr #app-skills"));
+    skillElems.map(function (i) {
+        var name = i.attributes.name.value;
+        if (i.innerText.indexOf(skillsString) == -1) {
+            hides.push(document.getElementById("app-" + name));
+        }
+        else {
+            document.getElementById("app-" + name).hidden = false;
+        }
+    });
+
+    hides.map(function (i) {
+        i.hidden = true;
+    });
+}
+
+function jq(myid) {
+
+    return "#" + myid.replace(/(:|\.|\[|\]|,)/g, "\\$1");
 
 }

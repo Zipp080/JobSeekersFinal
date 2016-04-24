@@ -1,47 +1,25 @@
-
-body {
-  padding-top: 50px;
-  position: fixed;
-  top: 0px;
-  left: 1px;
-
+.search {
+    position: fixed;
+    left:auto;
+    top: 20px;
 }
 
 .sub-header {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
+ 
 }
 
 .navbar-fixed-top {
   border: 0;
-  background-color: #3D3D3D
-}
-
-
-.sidebar {
-    display: none;
-    position: fixed;
-    top: 51px;
-    bottom: 0;
-    left: 1500px;
-    width: 640px;
-    z-index: 1000;
-    display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #989898;
-    border-right: 1px solid #eee;
+  background-color: #3D3D3D;
+  position: fixed;
 }
 
 .main {
     padding: 100px;
-    position: relative;
     margin-left: -90px;
     margin-right: 60px;
-    padding-right: 29px;
-    padding-left: -10px;
-    width: 1413px;
 
 }
 
@@ -49,6 +27,7 @@ body {
   margin-bottom: 20px;
 
 }
+
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
@@ -57,15 +36,16 @@ body {
 
 /* table */
 table.tablesorter {
+    position: fixed;
+    left: 20px;
+    width: 60%;
 	font-family:arial;
-	background-color: #CDCDCD;
 	font-size: 17pt;
-	width: 116%;
 	text-align: left;
 
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
-	background-color: #e6EEEE;
+	background-color: #b5d3fb;
 	border: 1px solid #FFF;
 	font-size: 12pt;
 	padding: 12px;
@@ -79,11 +59,11 @@ table.tablesorter thead tr .header {
 table.tablesorter tbody td {
 	color: #3D3D3D;
 	padding: 4px;
-	background-color: #FFF;
 	vertical-align: top;
 }
+
 table.tablesorter tbody tr.odd td {
-	background-color:#F0F0F6;
+	background-color:#d54b65;
 }
 table.tablesorter thead tr .headerSortUp {
 	background-image: url(/img/asc.gif);
@@ -92,86 +72,102 @@ table.tablesorter thead tr .headerSortDown {
 	background-image: url(/img/desc.gif);
 }
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-background-color: #8dbdd8;
+background-color: #d54b65;
 }
 
+tr:hover,tr.alt:hover
+{
+    background: rgb(221, 221, 221)!important;
+}
 
 
 /* applicant box */
+applicantbox {
+    position: absolute;
+    width: 60%;
+
+}
+
+.sidebar {
+    position: absolute;
+    top: 51px;
+    bottom: 0;
+    right: 0px;
+    width: 40%;
+    padding: 20px;
+    background-color: #b5d3fb;
+}
+
 .table-user-information > tbody > tr {
+   
     border-top: 1px solid rgb(221, 221, 221);
-    width: 200px;
+    width: 40%;
 }
 
 .table-user-information > tbody > tr:first-child {
+
     border-top: 0;
-     width: 200px;
+    width: 40%;
 }
 
 .table-user-information > tbody > tr > td {
     border-top: 0;
-    width: 200px;
-}
-
-.panel-body {
-    font-size: 20em;
-    width: 500px;
-    height: 750px;
-}
-
-.panel {
-    background-color: #e6EEEE;
-}
-
-.applicantbox {
-    margin-left:20px;
-    width: 550px;
-}
-
-.panel-heading {
-     background-color: #e6EEEE;
+    width: 40%;
 }
 
 .applicantpic {
     width: 150px;
     position: absolute;
-    right: 410px;
+    left: 30px;
 }
 
 .applicantinfo {
+    position: absolute;
+    left: 0px;
     margin-left:50px;
-    width: 450px;
+    width: 80%;
     margin-top: -200px;
 }
 
 applicantname {
     position: absolute;
-    right: 150px;
+    right: 50px;
+    top: 50px;
     font-size: xx-large;
-    top: 120px;
     text-align:center;
-    padding-left:2em;
-    max-width:300px;
+}
+
+/* applicant info  */
+.panel-body {
+    position: absolute;
+    left: 20px;
+    font-size: 20em;
+    width: 90%;
+    height: 95%;
+    padding-left: 20px;
+    background-color: #edf369;
 }
 
 personality {
-    font-size: medium;
+    font-size: 7%;
     font-weight:600;
     text-align: center;
-    margin-top: 5px;
+    width: 80%;
 }
 
 .personalities {
-  margin-bottom: 30px;
+  position: absolute;
+  margin-bottom: 150px;
   text-align: center;
+  width: 95%;
 }
-
 
 .Power {
     font-size: large;
     color: #d54b65;
     left:20px;
     font-weight:600;
+    margin-bottom: 150px;
 }
 
 .Inspirational {
@@ -192,22 +188,27 @@ personality {
     font-weight:600;
 }
 
+
+
+/* downlaod resume button */
+.thumbnail {
+    margin-bottom: 140px;
+    text-align: center;
+    right:250px;
+    bottom: 150px;
+}
 .post-content {
     margin-top: -65px;
-
-}
-
-.thumbnail {
-    position:relative;
-    margin-bottom: 40px;
-    text-align: center;
-    right:-100px;
-    display: inline-block;
 }
 
 h3 {
    margin-right: -50px;
+}
 
+
+form {
+    width:1000px;
+    margin:50px auto;
 }
 
 

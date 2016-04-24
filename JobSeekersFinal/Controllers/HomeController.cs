@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,7 +16,7 @@ namespace JobSeekersFinal.Controllers
 {
     public class HomeController : Controller
     {
-
+        private const string _appDataQuery = "SELECT au.*, app.Id as appId, app.LastName, app.FirstName, app.MiddleName, app.Title, app.Skills FROM Applicants app JOIN Auth au on app.email = au.email where upper(au.email) = upper('{0}')";
         private static readonly string _connString = ConfigurationManager.ConnectionStrings["appDb"].ConnectionString;
         private const int _appAuthType = 1;
         private const int _employerAuthType = 2;
@@ -33,10 +34,10 @@ namespace JobSeekersFinal.Controllers
             
             using (var sql = new DataService(_connString))
             {
-                var applicant = sql.GetRecords($"Select * from applicants where upper(Email) = upper('{Email}')");
+                var applicant = sql.GetRecords(string.Format(_appDataQuery, Email));
                 var app = new Applicant();
                 app.SetData(applicant.FirstOrDefault());
-                return View("ApplicantProfile", app);
+                return (app != null) ? View("ApplicantProfile", app) : View("ApplicantProfile");
             }
         }
 
@@ -45,7 +46,7 @@ namespace JobSeekersFinal.Controllers
             using (var sql = new DataService(_connString))
             {
                 List<Applicant> applicants = new List<Applicant>();
-                var apps = sql.GetRecords("SELECT au.*, app.LastName, app.FirstName, app.Title FROM Applicants app JOIN Auth au on app.email = au.email where au.type = 1");
+                var apps = sql.GetRecords("SELECT au.*, app.LastName, app.FirstName, app.Title, app.Skills FROM Applicants app JOIN Auth au on app.email = au.email where au.type = 1");
                 foreach (var app in apps)
                 {
                     var appToAdd = new Applicant();
@@ -86,7 +87,7 @@ namespace JobSeekersFinal.Controllers
         {
             using (var sql = new DataService(_connString))
             {
-                var appRecord = sql.GetRecords($"SELECT au.*, app.Id as appId, app.LastName, app.FirstName, app.MiddleName, app.Title, app.Skills FROM Applicants app JOIN Auth au on app.email = au.email where upper(au.email) = upper('{Email}')").FirstOrDefault();
+                var appRecord = sql.GetRecords(string.Format(_appDataQuery, Email)).FirstOrDefault();
                 if (appRecord == null)
                 {
                     return JsonAllowGet(new
@@ -185,6 +186,11 @@ namespace JobSeekersFinal.Controllers
         {
             var jsonData = JsonConvert.DeserializeObject<Dictionary<string, object>>(Request.QueryString[0]);
             var newApp = ApplicantData.GetApplicantData(jsonData["Email"].ToString());
+
+            if (jsonData.ContainsKey("Resume"))
+            {
+                jsonData["Resume"] = Path.Combine(ResumeStorageBase, Path.GetFileName(jsonData["Resume"].ToString()));
+            }
             newApp.SetData(jsonData);
 
             using (var sql = new DataService(_connString))
@@ -283,6 +289,45 @@ namespace JobSeekersFinal.Controllers
                 }
             }
         }
+
+
+
+        public const string ResumeStorageBase = "C:\\Resumes";
+
+        public void SubmitResume()
+        {
+            var f = Request.Files["ResumeFile"];
+            DirectoryInfo resDir;
+            if (!Directory.Exists(ResumeStorageBase))
+                resDir = Directory.CreateDirectory(ResumeStorageBase);
+            else
+                resDir = new DirectoryInfo(ResumeStorageBase);
+                        
+            string fileName = f.FileName;
+            string ext = Path.GetExtension(fileName);
+            int i = 0;
+            while (System.IO.File.Exists(Path.Combine(ResumeStorageBase, fileName)))
+                fileName = string.Format("{0}({1}){2}", Path.GetFileNameWithoutExtension(f.FileName), ++i, ext);
+
+            int bytesRead = 0;
+            int bufferLen = 1024;
+            byte[] fileContents = new byte[f.ContentLength];
+            f.InputStream.Flush();
+            do
+            {
+                bytesRead = f.InputStream.Read(fileContents, bytesRead, bufferLen);
+
+            } while (bytesRead > 0);
+            
+            using (var fStream = new FileStream(Path.Combine(ResumeStorageBase, fileName), FileMode.CreateNew))
+            {
+                fStream.Write(fileContents, 0, fileContents.Length);
+                fStream.Flush();
+                fStream.Close();
+            }            
+        }
+
+
 
         private int[] ConvertJArrayToIntArray(JArray convertValues)
         {

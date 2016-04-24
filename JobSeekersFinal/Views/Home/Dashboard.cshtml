@@ -17,13 +17,12 @@
     @*Top Nav Bar*@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">JobSeekers</a>
+            <div class="navbar-header" color="red">
+                <a class="navbar-brand" href="Dashboard?authType=2">JobSeekers</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"></a></li>
-                    <li><a href="#">Help</a></li>
+                    <li><a href="EmployerHelp">Help</a></li>
                     <li><a href="mailto:webmaster@jobseekers.com">Contact</a></li>
                 </ul>
             </div>
@@ -33,8 +32,16 @@
         Welcome to JobSeekers!
     </div>
     @*Applicant Table*@
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="main">
         <h2 class="sub-header">Applicants</h2>
+        <div class="search">
+        <form>
+            <input type="text" id="filter-title" placeholder="Title...">
+            <input type="text" id="filter-skill" placeholder="Skills...">
+            <input type="button" value="Search" onclick="FilterDashboard($('#filter-title').val(), $('#filter-skill').val())">
+        </form>
+        </div>
+        
         <table id="myTable" class="tablesorter">
             <thead>
                 <tr>
@@ -48,12 +55,13 @@
             <tbody>
                 @foreach (JobSeekersFinal.Models.Applicant app in Model)
                 {
-                    <tr>
-                        <td onclick="LoadProfile('@app.Email')">@app.FirstName</td>
-                        <td onclick="LoadProfile('@app.Email')">@app.LastName</td>
-                        <td onclick="LoadProfile('@app.Email')">@app.DesiredPositions</td>
-                        <td onclick="LoadProfile('@app.Email')">@app.City</td>
-                        <td onclick="LoadProfile('@app.Email')">@app.State</td>
+                    <tr id="app-@app.Email">
+                        <td id="app-FName" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.FirstName</td>
+                        <td id="app-LName" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.LastName</td>
+                        <td id="app-title" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.DesiredPositions</td>
+                        <td id="app-city" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.City</td>
+                        <td id="app-state" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.State</td>
+                        <td id="app-skills" name="@app.Email" hidden>@app.Skills</td>
                     </tr>
                 }
             </tbody>
@@ -62,14 +70,10 @@
         @*Right Applicant Bar*@
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-3 col-md-2 sidebar">
+                <div class="col-sm-4 col-md-3 sidebar">
 
                     @*Applicant Box*@
                     <div class="applicantbox">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"></h3>
-                            </div> 
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="applicantpic" align="center"> <img alt="User Pic" src="~/img/ProfilePics/Avatar4.png" class="img-circle img-responsive"> </div>
@@ -101,41 +105,41 @@
                                         </table>
                                         <div class="row personalities">
                                             <div class="col-xs-6 col-sm-3">
-                                                <img src="~/img/powerful1.png" width="200" height="200" class="img-responsive">
+                                                <img src="~/img/powerful1.png" class="img-responsive">
                                                 <personality>Power</personality>
                                                 <span class="Power" id="profile-power">76</span>
                                             </div>
                                             <div class="col-xs-6 col-sm-3">
-                                                <img src="~/img/blue2.png" width="200" height="200" class="img-responsive">
+                                                <img src="~/img/blue2.png" class="img-responsive">
                                                 <personality>Inspirational</personality>
                                                 <span class="Inspirational" id="profile-inspirational">25</span>
                                             </div>
                                             <div class="col-xs-6 col-sm-3">
-                                                <img src="~/img/green.png" width="200" height="200" class="img-responsive">
+                                                <img src="~/img/green.png" class="img-responsive">
                                                 <personality>Balance</personality>
                                                 <span class="Balance" font size="6" id="profile-balance">21</span>
                                             </div>
                                             <div class="col-xs-6 col-sm-3">
-                                                <img src="~/img/yellow2.png" width="200" height="200" class="img-responsive">
+                                                <img src="~/img/yellow2.png" class="img-responsive">
                                                 <personality>Analytical</personality>
                                                 <span class="Analytical" id="profile-analytical">35</span>
                                                 <p></p>
                                             </div>
-                                        </div>
-                                       <p></p>
-                                        <div class="thumbnail">
-                                            <a href="resume.docx" download>
-                                                <img src="~/img/dlbutton.png" />
-                                            </a>
-                                            <div class="caption post-content">
-                                                <h3 style="color:white; font-size:medium">Download Resume</h3>
+                                            <div class="thumbnail">
+                                                <a href="resume.docx" download>
+                                                    <img src="~/img/dlbutton.png" />
+                                                </a>
+                                                <div class="caption post-content">
+                                                    <h3 style="color:white; font-size:medium">Download Resume</h3>
+                                                </div>
                                             </div>
                                         </div>
+                                       <p></p>
+                                      
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
 

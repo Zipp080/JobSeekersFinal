@@ -1,4 +1,6 @@
-﻿@{
+﻿@model JobSeekersFinal.Models.Applicant
+
+@{
     ViewBag.Title = "ApplicantProfile";
 }
 
@@ -17,25 +19,6 @@
     @*Top Nav Bar*@
 
 
-<div class="applicantpersonal">
-    <ul class="personal">
-        Personal Information
-        <li>Address:</li>
-        <li>City:</li>
-        <li>State:</li>
-        <li>Zip:</li>
-        <li>Phone:</li>
-        <li>Email:</li>
-
-    </ul>
-</div>
-
-
-<div class="applicantprofessional">
-   Title:
-   Skills:
-</div>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -51,21 +34,25 @@
         </div>
     </nav>
 
-    <div class="applicantpic" align="center"> <img alt="User Pic" src="~/img/ProfilePics/Avatar4.png" class="img-circle img-responsive"> </div>
+    <div class="applicantpersonal">
+        <ul class="personal">
+            Personal Information
+            <li>Name: @Model.FirstName @Model.MiddleName @Model.LastName</li>
+            <li>Address: @Model.Address</li>
+            <li>City: @Model.City</li>
+            <li>State: @Model.State</li>
+            <li>Zip: @Model.Zip</li>
+            <li>Phone: @Model.Phone</li>
+            <li>Email: @Model.Email</li>
+            <li>Title: @Model.DesiredPositions</li>
+            <li>Skills: @Model.Skills</li>
 
-
-@*Applicant Box*@
-<div class="applicantbox">
-    <div class="panel panel-info">
-        <div class="panel-body">
-            <div class="row">
-                <applicantname>Eric Robert <br />Thibeau</applicantname>
-               
-            </div>
-        </div>
+        </ul>
     </div>
-</div>
-        
+
+
+    <br />
+    <br />
     
 <div class="thumbnail">
     <a href="resume.docx" download>
