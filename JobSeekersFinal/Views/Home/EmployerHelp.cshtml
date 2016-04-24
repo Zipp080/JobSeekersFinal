@@ -1,22 +1,22 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "EmployerHelp";
 }
 
-<h2></h2>
 <html lang="en">
-
 <head>
     <title>JobSeekers - Employer Help</title>
     <link href="~/Content/dashboard.css" rel="stylesheet">
+    <link href="~/Content/employerHelp.css" rel="stylesheet">
     <script type="text/javascript" src="~/Scripts/jquery-latest.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.tablesorter.js"></script> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 
 <body>
-    @*Top Nav Bar*@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
-            <div class="navbar-header" color="red">
+            <div class="navbar-header">
                 <a class="navbar-brand" href="Dashboard?authType=2">JobSeekers</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
@@ -27,11 +27,59 @@
             </div>
         </div>
     </nav>
+<div class="outerDiv">
+    <br /><br />
+		<div class="WorkBanner">
+			<img  src="~/img/Work_banner.jpg" alt="Work banner" width="100%" height="40%"/>
+		</div>
 
-   
+    <div class="content">
+        <div class="mainContent">
+            <h1>How to use our website:</h1>
+            
+            <p>
+				In three easy steps, create your JobSeekers account and find the best employee for your company. 
+            </p>
+			
+				<p>
+					<img src="~/img/Step1.png" alt="Step1" width="108" height="93" align="top-left"/>
+					Use your Employer membership plan to log in at any time, for complete access to thousands of applicants looking for companies just like yours.
+				</p>
+			</br>
 
-    
+				<p>
+					<img src="~/img/Step2.png" alt="Step2" width="108" height="93" align="top-left" />	
+					Evaluate the resumes and results of the personality test for job seekers that meet your skill needs, to help identify the most qualified candidate for the position.
+				</p>
+			</br>
+
+				<p>
+					<img src="~/img/Step3.png"alt="Step3" width="108" height="93" align="top-left" />
+					Contact candidate's by sending him/her an email and let them know about the opportunity that available.
+				</p>
+          <br/>
+		  <br/>
+            <h3>How does the personality test make our website different?</h3>
+            
+            <p>
+            The personality test, which must be taken by each applicant while applying, is a powerful tool that gives you an idea about the personality 
+			of the applicant. Consequently, the result of pesonality test can help to determine if the applicant will be a good fit for your company.
+            </p>
+		<br/>
+		<br/>
+            <h2>The Personality Test</h2>
+            
+					<img  src="~/img/Personality_Test.jpg" alt="Personality Test" class="center" />
+			
+        </div> <!-- mainContent -->
+
+        <p class="clear" />
+    </div> 
+
+</div> 
+
+
+</div>
 </body>
 </html>
-
 

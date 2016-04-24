@@ -33,7 +33,6 @@
     </div>
     @*Applicant Table*@
     <div class="main">
-        <h2 class="sub-header">Applicants</h2>
         <div class="search">
         <form>
             <input type="text" id="filter-title" placeholder="Title...">
@@ -41,7 +40,7 @@
             <input type="button" value="Search" onclick="FilterDashboard($('#filter-title').val(), $('#filter-skill').val())">
         </form>
         </div>
-        
+        <h1 class="sub-header"></h1>
         <table id="myTable" class="tablesorter">
             <thead>
                 <tr>
@@ -77,18 +76,18 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="applicantpic" align="center"> <img alt="User Pic" src="~/img/ProfilePics/Avatar4.png" class="img-circle img-responsive"> </div>
-                                    <applicantname id="profile-name">Eric Robert <br />Thibeau</applicantname>
+                                    <applicantname id="profile-name">Applicant <br />Name</applicantname>
                                     <div class="applicantinfo">
                                         <br>
                                         <table class="table table-user-information">
                                             <tbody>
                                                 <tr>
                                                     <td>Title:</td>
-                                                    <td id="profile-title">Project Manager</td>
+                                                    <td id="profile-title">Title here</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Address:</td>
-                                                    <td id="profile-address">43 Glen Cv, Laguna Niguel, CA 92677</td>
+                                                    <td id="profile-address">Strett, City, State Zip</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Email</td>
@@ -96,44 +95,46 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Phone Number</td>
-                                                    <td id="profile-phone">555-555-5555<br>
+                                                    <td id="profile-phone">###-###-###<br>
                                                 </tr>
                                                 <tr>
                                                     <td>Skills</td>
-                                                    <td id="profile-skills">Microsoft Project, Scrum, SQL, HTML, JIRA</td>
+                                                    <td id="profile-skills">My Skills</td>
                                                 </tr>
                                         </table>
                                         <div class="row personalities">
                                             <div class="col-xs-6 col-sm-3">
                                                 <img src="~/img/powerful1.png" class="img-responsive">
                                                 <personality>Power</personality>
-                                                <span class="Power" id="profile-power">76</span>
+                                                <span class="Power" id="profile-power">0</span>
                                             </div>
                                             <div class="col-xs-6 col-sm-3">
                                                 <img src="~/img/blue2.png" class="img-responsive">
                                                 <personality>Inspirational</personality>
-                                                <span class="Inspirational" id="profile-inspirational">25</span>
+                                                <span class="Inspirational" id="profile-inspirational">0</span>
                                             </div>
                                             <div class="col-xs-6 col-sm-3">
                                                 <img src="~/img/green.png" class="img-responsive">
                                                 <personality>Balance</personality>
-                                                <span class="Balance" font size="6" id="profile-balance">21</span>
+                                                <span class="Balance" font size="6" id="profile-balance">0</span>
                                             </div>
                                             <div class="col-xs-6 col-sm-3">
                                                 <img src="~/img/yellow2.png" class="img-responsive">
                                                 <personality>Analytical</personality>
-                                                <span class="Analytical" id="profile-analytical">35</span>
-                                                <p></p>
+                                                <span class="Analytical" id="profile-analytical">0</span>
+                                                <p></p><p></p><p></p>
                                             </div>
-                                            <div class="thumbnail">
-                                                <a href="resume.docx" download>
+                                            <div class="downloadbutton">
+                                                <a href="test.txt" download>
                                                     <img src="~/img/dlbutton.png" />
                                                 </a>
                                                 <div class="caption post-content">
                                                     <h3 style="color:white; font-size:medium">Download Resume</h3>
                                                 </div>
                                             </div>
+
                                         </div>
+                               
                                        <p></p>
                                       
                                     </div>

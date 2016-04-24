@@ -217,6 +217,7 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\employerHelp.css" />
     <Content Include="Content\Layout.css" />
     <Content Include="Content\Profile3.css" />
     <Content Include="Content\dashboard.css" />
@@ -253,6 +254,7 @@
     <Content Include="img\JobSeeker Logo-REd.png" />
     <Content Include="img\modern-office-designs-wjOd.jpg" />
     <Content Include="img\Office2.jpg" />
+    <Content Include="img\Personality_Test.jpg" />
     <Content Include="img\powerful1.png" />
     <Content Include="img\ProfilePics\Avatar1.png" />
     <Content Include="img\ProfilePics\Avatar2.png" />
@@ -267,8 +269,12 @@
     <Content Include="img\Resume.jpg" />
     <Content Include="img\shadow.gif" />
     <Content Include="img\soft-skills.jpg" />
+    <Content Include="img\Step1.png" />
+    <Content Include="img\Step2.png" />
+    <Content Include="img\Step3.png" />
     <Content Include="img\Subscription.PNG" />
     <Content Include="img\top.png" />
+    <Content Include="img\Work_banner.jpg" />
     <Content Include="img\yellow.png" />
     <Content Include="img\yellow2.png" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
@@ -1054,9 +1060,10 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Home\ApplicationComplete.cshtml" />
+    <None Include="Views\Home\EmployerHelp.cshtml" />
     <Content Include="Views\Home\HowDoesItWork.cshtml" />
     <Content Include="Views\Home\AccountLogin.cshtml" />
-    <Content Include="Views\Home\EmployerHelp.cshtml" />
+    <Content Include="Views\Home\EmployerHelp2.cshtml" />
     <Content Include="Views\Home\ApplicantProfile.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />

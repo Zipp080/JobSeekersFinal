@@ -7,6 +7,11 @@ h6 {
     font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 600;
 }
+h3{
+    color:black;
+}
+
+
 
 h7,
 h8{
@@ -45,6 +50,7 @@ h8{
     width: 500px;
     border-top: 1px solid #f8f8f8;
     border-bottom: 2px solid rgba(0,0,0,0.2);
+    border-bottom-color: rgba(0,0,0,0.6);
 }
 
 .intro-message > h3 {

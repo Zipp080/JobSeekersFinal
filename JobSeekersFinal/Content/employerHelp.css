@@ -1,0 +1,76 @@
+
+div#content {
+    background-color: #fff;
+    padding: 70px;
+}
+
+/* ====- main content ===== */
+
+.content div#mainContent {
+    float: left;
+    width: 500px 100px;
+    margin: 10px 20px;
+    padding: 0 15px;
+}
+
+.mainContent p {
+    font-family: Arial, serif;
+    font-size: 1.5em;
+    line-height: 1.4em;
+    color: #000;
+    margin: 1ex 50px;
+
+}
+
+.mainContent h1, #mainContent h2, #mainContent h3 {
+    font-family: "Arial", sans-serif;
+}
+
+.mainContent h1 {
+    font-size: 2.6em;
+    font-weight: bold;
+    color: #4169e1;
+    margin: 20px 0 .4ex 10px;
+    
+}
+
+.mainContent h2 {
+    font-size: 2.2em;
+    color: #3C3809;
+	position: center;
+    margin: .4ex 10px;
+}
+
+img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+} 
+
+.mainContent h3 {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #3C3809;
+    margin: 1ex 10px -.2ex 10px;
+}
+
+.mainContent ul {
+    font-family: Arial, serif;
+    font-size: 2.9em;
+    
+}
+
+
+.navbar {
+    font-family: "Arial", sans-serif;
+    font-size: .75em;
+    color: #fff;
+    height: 10px;
+    margin-bottom: 0px;
+    bottom: -0px;
+}
+
+
+WorkBanner{
+    margin-top: 20px;
+}
