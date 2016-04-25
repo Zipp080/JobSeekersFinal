@@ -189,7 +189,7 @@ namespace JobSeekersFinal.Controllers
 
             if (jsonData.ContainsKey("Resume"))
             {
-                jsonData["Resume"] = Path.Combine(ResumeStorageBase, Path.GetFileName(jsonData["Resume"].ToString()));
+                jsonData["Resume"] = Path.Combine(_resumeStorageBase, Path.GetFileName(jsonData["Resume"].ToString()));
             }
             newApp.SetData(jsonData);
 
