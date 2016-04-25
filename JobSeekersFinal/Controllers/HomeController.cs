@@ -189,7 +189,7 @@ namespace JobSeekersFinal.Controllers
 
             if (jsonData.ContainsKey("Resume"))
             {
-                jsonData["Resume"] = Path.Combine(ResumeStorageBase, Path.GetFileName(jsonData["Resume"].ToString()));
+                jsonData["Resume"] = Path.Combine(_resumeStorageBase, Path.GetFileName(jsonData["Resume"].ToString()));
             }
             newApp.SetData(jsonData);
 
@@ -292,42 +292,30 @@ namespace JobSeekersFinal.Controllers
 
 
 
-        public const string ResumeStorageBase = "C:\\Resumes";
+        private const string _resumeStorageBase = "C:\\Resumes";
+        private const int _bufferLen = 1024;
 
         public void SubmitResume()
         {
             var f = Request.Files["ResumeFile"];
-            DirectoryInfo resDir;
-            if (!Directory.Exists(ResumeStorageBase))
-                resDir = Directory.CreateDirectory(ResumeStorageBase);
-            else
-                resDir = new DirectoryInfo(ResumeStorageBase);
-                        
-            string fileName = f.FileName;
-            string ext = Path.GetExtension(fileName);
-            int i = 0;
-            while (System.IO.File.Exists(Path.Combine(ResumeStorageBase, fileName)))
-                fileName = string.Format("{0}({1}){2}", Path.GetFileNameWithoutExtension(f.FileName), ++i, ext);
 
-            int bytesRead = 0;
-            int bufferLen = 1024;
+            string fileName = CreateFilePath(f.FileName);            
+
+            int bytesRead = 0;            
+            int readCount;
             byte[] fileContents = new byte[f.ContentLength];
-            f.InputStream.Flush();
-            do
+            while ((readCount = f.InputStream.Read(fileContents, bytesRead, _bufferLen)) > 0)
             {
-                bytesRead = f.InputStream.Read(fileContents, bytesRead, bufferLen);
-
-            } while (bytesRead > 0);
+                f.InputStream.Flush();
+                bytesRead += readCount;
+            }               
             
-            using (var fStream = new FileStream(Path.Combine(ResumeStorageBase, fileName), FileMode.CreateNew))
+            using (var fStream = new FileStream(Path.Combine(_resumeStorageBase, fileName), FileMode.CreateNew))
             {
                 fStream.Write(fileContents, 0, fileContents.Length);
-                fStream.Flush();
                 fStream.Close();
             }            
         }
-
-
 
         private int[] ConvertJArrayToIntArray(JArray convertValues)
         {
@@ -337,6 +325,20 @@ namespace JobSeekersFinal.Controllers
                 x.Add(Convert.ToInt32(val));
             }
             return x.ToArray();
+        }
+
+        private string CreateFilePath(string fileName)
+        {
+            if (!Directory.Exists(_resumeStorageBase))
+                Directory.CreateDirectory(_resumeStorageBase);
+
+            string ext = Path.GetExtension(fileName);
+            int i = 0;
+            string tempFileName = fileName;
+            while (System.IO.File.Exists(Path.Combine(_resumeStorageBase, fileName)))
+                fileName = string.Format("{0}({1}){2}", Path.GetFileNameWithoutExtension(tempFileName), ++i, ext);
+
+            return Path.Combine(_resumeStorageBase, fileName);
         }
 
 
