@@ -46,7 +46,7 @@ namespace JobSeekersFinal.Controllers
             using (var sql = new DataService(_connString))
             {
                 List<Applicant> applicants = new List<Applicant>();
-                var apps = sql.GetRecords("SELECT au.*, app.LastName, app.FirstName, app.Title, app.Skills FROM Applicants app JOIN Auth au on app.email = au.email where au.type = 1");
+                var apps = sql.GetRecords("SELECT au.*, app.LastName, app.FirstName, app.Title, app.Skills, app.CreateDate FROM Applicants app JOIN Auth au on app.email = au.email where au.type = 1 ORDER BY app.createdate DESC");
                 foreach (var app in apps)
                 {
                     var appToAdd = new Applicant();
