@@ -61,8 +61,7 @@
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>
-                                    <a href="~/Home/NewApplicantProfile.cshtml" class="button">Edit</a>
-
+                                    @Html.ActionLink("Edit", @"EditApplicantProfile", "Home", new { email = Model.Email}, null)
                                 </td>
                             </tr>
 
@@ -86,13 +85,6 @@
                                     </p>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>
-                                    <a href="~/Home/NewApplicantProfile.cshtml" class="button">Edit</a>
-
-                                </td>
-                            </tr>
                         </table>
                     </div>
                     <div class="myresume">
@@ -101,17 +93,18 @@
                         <br />
                         <p style="font-family:'Arial'; font-size: 2em; font-weight: bold;">My resumé</p>
                         <br />
-                        <button type="submit" onclick="window.open('resume.docx')"><p style="font-size:12px;">Download your resumé</p></button>
+                        <button type="submit" onclick="DownloadResume('@Model.Email')">Download your resume</button>
                         <br />
                         <br />
                         <form method="POST" action="uploadFile" enctype="multipart/form-data">
-                            <p class="text-left" style="font-size: 13px; font-weight: bold;">Upload a new resumé</p><input type="file" name="file" />
+                            <p class="text-left" style="font-size: 13px; font-weight: bold;">Upload a new resumé</p><input id ="new_app_resume" type="file" name="file" />
+                            <input id="saveForm" class="button_text" type="button" name="submit" value="Submit!" onclick="UploadNewResume('@Model.Email')" />
                         </form>
                         <br />
                         <br />
                         <br />
                         <br />
-                        <button type="button" onclick="deletedata">Delete my Profile</button> 
+                        <button type="button" onclick="DeleteApplicant('@Model.Email')">Delete my Profile</button> 
                     </div>
                 </div>
                 <div class="col-xs-1"></div>

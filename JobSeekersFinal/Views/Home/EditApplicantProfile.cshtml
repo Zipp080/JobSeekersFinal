@@ -1,0 +1,109 @@
+﻿@model JobSeekersFinal.Models.Applicant
+
+@{
+    ViewBag.Title= "EditApplicantProfile";
+    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+}
+
+
+
+<html>
+
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/JsUtils.js"></script>
+    <title>JobSeekers - Edit Profile</title>
+    <link href="~/Content/Profile.css" rel="stylesheet">
+    <script type="text/javascript" src="~/Scripts/jquery-latest.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.tablesorter.js"></script>
+
+</head>
+
+<body id="main_body">
+    <br />
+    <br />
+    <br />
+    <br />
+    <div id="form_container">
+        <form class="form_container" enctype="multipart/form-data" method="post" action="">
+            <div class="form_description">
+                <br /><br />
+                <h2 class="fs-title">EDIT PROFILE</h2>
+                <h3 class="fs-subtitle"></h3>
+            </div>
+            <ul>
+
+                <li id="li_1">
+                    <label class="description" for="Name">Name </label>
+                    <span>
+                        <input id="new_app_first_name" class="element text" maxlength="255" size="15" value="@Model.FirstName" />
+
+                    </span>
+                    <span>
+                        <input id="new_app_middle_name" class="element text" maxlength="255" size="12" value="@Model.MiddleName" />
+                    </span>
+                    <span>
+                        <input id="new_app_last_name" class="element text" maxlength="255" size="15" value="@Model.LastName" />
+                    </span>
+                </li>
+                <li id="li_2">
+                    <label class="description" for="Address">Address </label>
+
+                    <div>
+                        <input id="new_app_street" class="element text" size="51" value="@Model.Address" type="text">
+                    </div>
+                    <div class="left">
+                        <input id="new_app_city" class="element text medium" value="@Model.City" type="text">
+                    </div>
+
+                    <div class="right">
+                        <input id="new_app_state" class="element text" value="@Model.State" maxlength="2" size="5" type="text">
+                    </div>
+
+                    <div class="left">
+                        <input id="new_app_zip" class="element text" maxlength="5" size="2" value="@Model.Zip" type="text">
+                    </div>
+
+
+                </li>
+                <li id="li_3">
+                    <label class="description" for="Phone">Phone </label>
+                    <span>
+                        <input id="new_app_phone" class="element text" maxlength="10" value="@Model.Phone" size="12" type="text">
+                    </span>
+                </li>
+                <li id="li_4">
+                    <label class="description" for="Email">Email </label>
+                    <div>
+                        <input id="new_app_email" class="element text medium" type="text" maxlength="255" value="@Model.Email.Replace("%40","@")" />
+                    </div>
+                </li>
+                <li id="li_5">
+                    <label class="description" for="Title">Desired Position </label>
+                    <div>
+                        <input id="new_app_positions" class="element text medium" type="text" maxlength="255" value="@Model.DesiredPositions" />
+                    </div>
+                </li>
+                <li id="li_6">
+                    <label class="description" for="Skills">Skills </label>
+                    <div>
+                        <textarea id="new_app_skills" class="element textarea medium" height="20em" >@Model.Skills</textarea>
+                    </div>
+                </li>
+
+                <li class="buttons">
+                    <p></p><br />
+                    <input id="saveForm" class="button_text" type="button" name="submit" value="Save" onclick="UpdateProfileData()" />
+                </li>
+            </ul>
+        </form>
+        <p id="next_page" hidden>1</p>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+</body>
+</html>

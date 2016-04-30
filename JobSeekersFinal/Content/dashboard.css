@@ -75,13 +75,10 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 background-color: #d54b65;
 }
 
-tr:hover,tr.alt:hover
+tr:hover,tr.alt:hover, tr.clicked
 {
     background: rgb(221, 221, 221)!important;
 }
-
-
-
 
 
 .table-user-information > tbody > tr {

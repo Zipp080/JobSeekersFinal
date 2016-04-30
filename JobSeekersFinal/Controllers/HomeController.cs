@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Net.Http;
 using JobSeekersFinal.Models;
 using JobSeekersFinal.DataSources;
 
@@ -57,22 +57,31 @@ namespace JobSeekersFinal.Controllers
             }
         }
 
-        public ActionResult About()
+        public ActionResult EditApplicantProfile(string email)
         {
-
-            return View();
+            Applicant appRecord;
+            using (var sql = new DataService(_connString))
+            {
+                var appData = sql.GetRecords(string.Format(_appDataQuery, email)).FirstOrDefault();
+                appRecord = new Applicant();
+                appRecord.SetData(appData);
+            }
+            return View("EditApplicantProfile", appRecord);
         }
 
-        public ActionResult Contact()
+        public ActionResult UpdateApplicantProfile()
         {
-
-            return View();
-        }
-
-        public ActionResult ApplicantProfile()
-        {
-
-            return View();
+            var jsonData = JsonConvert.DeserializeObject<Dictionary<string, object>>(Request.QueryString[0]);
+            Applicant app = new Applicant();
+            app.SetData(jsonData);
+            using (var sql = new DataService(_connString))
+            {
+                if (sql.SaveApplicantData(app) && sql.SaveAuthData(app))
+                {
+                    return JsonAllowGet(new { Result = true });
+                }
+            }
+            return JsonAllowGet(new { Result = false });
         }
 
         private enum ScoreCategory
@@ -123,8 +132,6 @@ namespace JobSeekersFinal.Controllers
             return View();
         }
 
-       
-
         public ActionResult AccountLogin()
         {
             return View();
@@ -146,12 +153,31 @@ namespace JobSeekersFinal.Controllers
             }
         }
 
+        public ActionResult DeleteProfile(string email)
+        {
+            var profileResumeDir = Directory.GetDirectories("C:\\Resumes").FirstOrDefault(r => r.Split('\\').Last() == email);
+            if (!string.IsNullOrWhiteSpace(profileResumeDir))
+            {
+                Directory.Delete(string.Format(_resumeStorageBase, email), true);
+            }
+
+            using (var sql = new DataService(_connString))
+            {
+                if (sql.DeleteProfile(email))
+                {
+                    return View("Index");
+                }
+            }
+
+            return View("Failed to delete account");            
+        }
 
         public ActionResult Sales()
         {
 
             return View();
         }
+
         public ActionResult EmployerHelp()
         {
 
@@ -261,6 +287,20 @@ namespace JobSeekersFinal.Controllers
             }            
         }
 
+        public FileResult DownloadResume(string email)
+        {
+            using (var sql = new DataService(_connString))
+            {
+                var rec = sql.GetRecords($"SELECT resume from applicants where upper(email)=upper('{email}')");
+                if (rec.Count() == 0)
+                    return null;
+
+                string resumePath = rec.First()["resume"].ToString();
+
+                return File(resumePath, "Document", Path.GetFileName(resumePath));
+            }
+        }
+
         /// <summary>
         /// Insert new applicant into Auth and Applicants table.
         /// </summary>
@@ -290,16 +330,30 @@ namespace JobSeekersFinal.Controllers
             }
         }
 
+        private void SetNewResumeString(string path, string email)
+        {
+            using (var sql = new DataService(_connString))
+            {
+                var rec = sql.GetRecords($"SELECT * FROM Applicants where upper(email)=upper('{email}')");
+                if (rec.Count() == 0)
+                    return;
 
+                var appRecord = sql.GetRecords(string.Format(_appDataQuery, email)).First();
+                Applicant app = new Applicant();
+                app.SetData(appRecord);
+                app.ResumePath = path;
+                sql.SaveApplicantData(app);
+            }
+        }
 
-        private const string _resumeStorageBase = "C:\\Resumes";
+        private const string _resumeStorageBase = "C:\\Resumes\\{0}";
         private const int _bufferLen = 1024;
 
-        public void SubmitResume()
+        public void SubmitResume(string email)
         {
             var f = Request.Files["ResumeFile"];
 
-            string fileName = CreateFilePath(f.FileName);            
+            string fileName = CreateFilePath(f.FileName, email);            
 
             int bytesRead = 0;            
             int readCount;
@@ -308,13 +362,14 @@ namespace JobSeekersFinal.Controllers
             {
                 f.InputStream.Flush();
                 bytesRead += readCount;
-            }               
-            
-            using (var fStream = new FileStream(Path.Combine(_resumeStorageBase, fileName), FileMode.CreateNew))
+            }
+            using (var fStream = new FileStream(fileName, FileMode.CreateNew))
             {
                 fStream.Write(fileContents, 0, fileContents.Length);
                 fStream.Close();
-            }            
+            }
+
+            SetNewResumeString(fileName, email);
         }
 
         private int[] ConvertJArrayToIntArray(JArray convertValues)
@@ -327,18 +382,19 @@ namespace JobSeekersFinal.Controllers
             return x.ToArray();
         }
 
-        private string CreateFilePath(string fileName)
+        private string CreateFilePath(string fileName, string relDir)
         {
-            if (!Directory.Exists(_resumeStorageBase))
-                Directory.CreateDirectory(_resumeStorageBase);
+            string dirFormat = string.Format(_resumeStorageBase, relDir);
+            if (!Directory.Exists(dirFormat))
+                Directory.CreateDirectory(dirFormat);
 
             string ext = Path.GetExtension(fileName);
             int i = 0;
             string tempFileName = fileName;
-            while (System.IO.File.Exists(Path.Combine(_resumeStorageBase, fileName)))
+            while (System.IO.File.Exists(Path.Combine(dirFormat, fileName)))
                 fileName = string.Format("{0}({1}){2}", Path.GetFileNameWithoutExtension(tempFileName), ++i, ext);
 
-            return Path.Combine(_resumeStorageBase, fileName);
+            return Path.Combine(dirFormat, fileName);
         }
 
 

@@ -293,7 +293,22 @@ namespace JobSeekersFinal.DataSources
             }
         }
 
+        public bool DeleteProfile(string email)
+        {
+            if (!OpenConnection())
+                return false;
 
+            int appId = Convert.ToInt32(GetRecords($"SELECT Id from Applicants where upper(email) = upper('{email}')").First()["Id"]);
+
+            string deleteQuery = $"DELETE FROM ApplicantsAnswers where applicantId = {appId}" +
+                                 $"DELETE FROM Applicants where id = {appId}" +
+                                 $"DELETE FROM Auth where upper(email) = upper('email')";
+
+            using (var cmd = new SqlCommand(deleteQuery, _connection))
+            {
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
 
         private IEnumerable<Dictionary<string, object>> ReadRecords(IDataReader reader)
         {

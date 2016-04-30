@@ -1,7 +1,7 @@
 ﻿@model JobSeekersFinal.Models.Applicant[]
 
 @{
-    ViewBag.Title = "Dashboard";
+    ViewBag.Title = "Edit Applicant Profile";
 }
 
 <html>
@@ -10,6 +10,7 @@
     <link href="~/Content/dashboard.css" rel="stylesheet">
     <script type="text/javascript" src="~/Scripts/jquery-latest.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="~/Scripts/JsUtils.js"></script>
     <title>JobSeekers - Dashboard</title>    
 </head>
 
@@ -55,16 +56,18 @@
                 @foreach (JobSeekersFinal.Models.Applicant app in Model)
                 {
                     <tr id="app-@app.Email">
-                        <td id="app-FName" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.FirstName</td>
-                        <td id="app-LName" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.LastName</td>
-                        <td id="app-title" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.DesiredPositions</td>
-                        <td id="app-city" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.City</td>
-                        <td id="app-state" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.State</td>
+                        <td id="app-FName" name="@app.Email" onclick="LoadProfile('DashboardProfile', '@app.Email')">@app.FirstName</td>
+                        <td id="app-LName" name="@app.Email" onclick="LoadProfile('DashboardProfile', '@app.Email')">@app.LastName</td>
+                        <td id="app-title" name="@app.Email" onclick="LoadProfile('DashboardProfile', '@app.Email')">@app.DesiredPositions</td>
+                        <td id="app-city" name="@app.Email" onclick="LoadProfile('DashboardProfile', '@app.Email')">@app.City</td>
+                        <td id="app-state" name="@app.Email" onclick="LoadProfile('DashboardProfile', '@app.Email')">@app.State</td>
                         <td id="app-skills" name="@app.Email" hidden>@app.Skills</td>
                     </tr>
                 }
             </tbody>
         </table>
+
+  
 
         @*Right Applicant Bar*@
         <div class="container-fluid">
@@ -124,7 +127,7 @@
                                                 <p></p><p></p><p></p>
                                             </div>
                                             <div class="downloadbutton">
-                                                <a href="test.txt" download>
+                                                <a onclick="DownloadApplicantResume($('#profile-email').attr('name'))" download>
                                                     <img src="~/img/dlbutton.png" />
                                                 </a>
                                                 <div class="caption post-content">

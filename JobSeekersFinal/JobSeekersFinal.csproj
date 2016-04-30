@@ -1063,6 +1063,7 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Home\ApplicationComplete.cshtml" />
+    <Content Include="Views\Home\EditApplicantProfile.cshtml" />
     <None Include="Views\Home\EmployerHelp.cshtml" />
     <Content Include="Views\Home\AccountLogin.cshtml" />
     <Content Include="Views\Home\ApplicantProfile.cshtml" />

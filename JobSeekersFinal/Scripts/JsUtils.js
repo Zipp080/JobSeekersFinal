@@ -28,6 +28,22 @@
 
 }
 
+function UploadNewResume(email) {
+    var fileElem = $("#new_app_resume");
+    if (fileElem.val().length > 0) {
+        var xhr = new XMLHttpRequest();
+        var fd = new FormData();
+        fd.append("ResumeFile", fileElem.attr("files")[0]);
+        xhr.open("POST", window.location.origin + "/Home/SubmitResume?email=" + email, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.DONE == xhr.readyState) {
+                alert("Resume uploaded!");
+            }
+        }
+        xhr.send(fd);
+    }
+}
+
 function SendProfileData() {
 
     var jsonData = {
@@ -43,7 +59,7 @@ function SendProfileData() {
     Positions : $("#new_app_positions").val(),
     Skills: $("#new_app_skills").val(),
     Resume: $("#new_app_resume").val(),
-    //createdate: $("#new_app_createdate").val(),
+    createdate: $("#new_app_createdate").val(),
     }
 
     // Store for sending with the Personality Quiz results, to know who to save for.
@@ -68,7 +84,7 @@ function SendProfileData() {
         var xhr = new XMLHttpRequest();
         var fd = new FormData();
         fd.append("ResumeFile", fileElem.prop("files")[0]);
-        xhr.open("POST", window.location.origin + "/Home/SubmitResume", true);
+        xhr.open("POST", window.location.origin + "/Home/SubmitResume?email=" + jsonData.Email, true);
         xhr.onreadystatechange = function () {
             if (xhr.DONE == xhr.readyState) {
                 $.ajax({
@@ -83,11 +99,75 @@ function SendProfileData() {
         }
         xhr.send(fd);
 
-    }
+    }    
+}
 
+function DeleteApplicant(email) {
+    $.ajax({
+        url: window.location.origin + "/Home/DeleteProfile?email=" + email,
+        contentType: "application/text",
+        success: function () {
+            alert("Profile information deleted.");
+            window.location = window.location.origin + "/Home/Index";
+        }
+    })
+    
     
 }
 
+function DownloadResume(email) {
+    window.location = window.location.origin + "/Home/DownloadResume?email=" + email;    
+}
+
+
+
+function DownloadApplicantResume(email) {
+    if (email.length == 0) {
+        return;
+    }
+    DownloadResume(email);
+}
+
+function UpdateProfileData() {
+    var jsonData = {
+        FirstName: $("#new_app_first_name").val(),
+        MiddleName: $("#new_app_middle_name").val(),
+        LastName: $("#new_app_last_name").val(),
+        Street: $("#new_app_street").val(),
+        City: $("#new_app_city").val(),
+        State: $("#new_app_state").val(),
+        Zip: $("#new_app_zip").val(),
+        Phone: $("#new_app_phone").val(),
+        Email: $("#new_app_email").val(),
+        Positions: $("#new_app_positions").val(),
+        Skills: $("#new_app_skills").val(),
+        Resume: $("#new_app_resume").val(),
+        //createdate: $("#new_app_createdate").val(),
+    }
+
+    if (jsonData.FirstName.length == 0 ||
+        jsonData.LastName.length == 0 ||
+        jsonData.MiddleName.length == 0 ||
+        jsonData.Street.length == 0 ||
+        jsonData.City.length == 0 ||
+        jsonData.State.length == 0 ||
+        jsonData.Zip.length == 0 ||
+        jsonData.Phone.length == 0 ||
+        jsonData.Email.length == 0 ||
+        jsonData.Positions.length == 0) {
+        alert("Please fill in all fields with data before proceeding.");
+        return;
+    }
+
+    $.ajax({
+        url: window.location.origin + "/Home/UpdateApplicantProfile",
+        contentType: "application/json",
+        data: JSON.stringify(jsonData),
+        success: function (result) {
+            window.location = window.location.origin + "/Home/Dashboard?authType=1&email=" + jsonData.Email;
+        }
+    });
+}
 function SubmitQuizSection() {
     
     var answers = {
@@ -151,10 +231,10 @@ function ValidateLogin() {
     });
 }
 
-function LoadProfile(email) {
+function LoadProfile(action, email) {
 
     $.ajax({
-        url: window.location.origin + "/Home/DashboardProfile?email=" + email,
+        url: window.location.origin + "/Home/" + action + "?email=" + email,
         contentType: "application/text",
         success: function (data) {
             if (!data.Result) {
@@ -168,6 +248,8 @@ function LoadProfile(email) {
             $("#profile-phone").text(data.Phone);
             $("#profile-skills").text(data.Skills);
             $("#profile-email").attr("href", "mailto:" + data.Email);
+            $("#profile-email").text("Click To Email");
+            $("#profile-email").attr("name", data.Email);
             $("#profile-power").text(data.Power);
             $("#profile-inspirational").text(data.Inspirational);
             $("#profile-balance").text(data.Balance);
