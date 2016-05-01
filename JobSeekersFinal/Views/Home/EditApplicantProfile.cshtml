@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title= "EditApplicantProfile";
-    Layout = "~/Views/Shared/_LandingLayout.cshtml";
 }
 
 
@@ -15,9 +14,7 @@
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/JsUtils.js"></script>
     <title>JobSeekers - Edit Profile</title>
-    <link href="~/Content/Profile.css" rel="stylesheet">
-    <script type="text/javascript" src="~/Scripts/jquery-latest.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.tablesorter.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/NewApplicant.css" media="all">
 
 </head>
 
@@ -77,7 +74,7 @@
                 <li id="li_4">
                     <label class="description" for="Email">Email </label>
                     <div>
-                        <input id="new_app_email" class="element text medium" type="text" maxlength="255" value="@Model.Email.Replace("%40","@")" />
+                        <input id="new_app_email" class="element text medium" type="text" maxlength="255" readonly="readonly" value="@Model.Email.Replace("%40","@")" />
                     </div>
                 </li>
                 <li id="li_5">
@@ -105,5 +102,19 @@
     <br />
     <br />
     <br />
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header" color="red">
+                <a class="navbar-brand" href="Dashboard?authType=1&email=@Model.Email">JobSeekers</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="mailto:webmaster@jobseekers.com">Contact</a></li>
+                    <li><a href="Index">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </body>
 </html>
