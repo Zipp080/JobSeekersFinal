@@ -237,6 +237,7 @@
     <Content Include="img\bottom.png" />
     <Content Include="img\business-plans.jpg" />
     <Content Include="img\Business_Incubation_Startup.jpg" />
+    <Content Include="img\business_steps.jpg" />
     <Content Include="img\circle-xxl.png" />
     <Content Include="img\Company Size.jpg" />
     <Content Include="img\company-culture.jpg" />
@@ -246,6 +247,7 @@
     <Content Include="img\Dressed-Up-Man2.jpg" />
     <Content Include="img\green.png" />
     <Content Include="img\hire-me-sign.jpg" />
+    <Content Include="img\home11.jpg" />
     <Content Include="img\how.jpg" />
     <Content Include="img\Image7.jpg" />
     <Content Include="img\Job interview.jpg" />

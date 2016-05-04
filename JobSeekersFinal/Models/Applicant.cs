@@ -68,7 +68,7 @@ namespace JobSeekersFinal.Models
 
             if (data.ContainsKey("Resume"))
                 ResumePath = data["Resume"].ToString();
-           
+
         }
 
 
