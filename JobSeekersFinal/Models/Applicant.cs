@@ -20,7 +20,6 @@ namespace JobSeekersFinal.Models
 
         public string DesiredPositions { get; set; } = null;
         public string Skills { get; set; } = null;
-        //public string CreateDate { get; set; } = Convert.ToString(DateTime.Now);
 
         public string ResumePath { get; set; } = null;
 
@@ -69,8 +68,7 @@ namespace JobSeekersFinal.Models
 
             if (data.ContainsKey("Resume"))
                 ResumePath = data["Resume"].ToString();
-            //CreateDate = data["creatdate"].ToString();
-            //ResumePath = data["resumePath"].ToString();
+           
         }
 
 
