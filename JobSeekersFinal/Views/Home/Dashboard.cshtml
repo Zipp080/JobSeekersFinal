@@ -1,7 +1,7 @@
 ﻿@model JobSeekersFinal.Models.Applicant[]
 
 @{
-    ViewBag.Title = "Dashboard";
+    ViewBag.Title = "Edit Applicant Profile";
 }
 
 <html>
@@ -10,6 +10,7 @@
     <link href="~/Content/dashboard.css" rel="stylesheet">
     <script type="text/javascript" src="~/Scripts/jquery-latest.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="~/Scripts/JsUtils.js"></script>
     <title>JobSeekers - Dashboard</title>    
 </head>
 
@@ -24,6 +25,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="EmployerHelp">Help</a></li>
                     <li><a href="mailto:webmaster@jobseekers.com">Contact</a></li>
+                    <li><a href="Index">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -55,16 +57,18 @@
                 @foreach (JobSeekersFinal.Models.Applicant app in Model)
                 {
                     <tr id="app-@app.Email">
-                        <td id="app-FName" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.FirstName</td>
-                        <td id="app-LName" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.LastName</td>
-                        <td id="app-title" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.DesiredPositions</td>
-                        <td id="app-city" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.City</td>
-                        <td id="app-state" name="@app.Email" onclick="LoadProfile('@app.Email')">@app.State</td>
+                        <td id="app-FName" name="@app.Email" onclick="LoadProfile('DashboardProfile', '@app.Email')">@app.FirstName</td>
+                        <td id="app-LName" name="@app.Email" onclick="LoadProfile('DashboardProfile', '@app.Email')">@app.LastName</td>
+                        <td id="app-title" name="@app.Email" onclick="LoadProfile('DashboardProfile', '@app.Email')">@app.DesiredPositions</td>
+                        <td id="app-city" name="@app.Email" onclick="LoadProfile('DashboardProfile', '@app.Email')">@app.City</td>
+                        <td id="app-state" name="@app.Email" onclick="LoadProfile('DashboardProfile', '@app.Email')">@app.State</td>
                         <td id="app-skills" name="@app.Email" hidden>@app.Skills</td>
                     </tr>
                 }
             </tbody>
         </table>
+
+  
 
         @*Right Applicant Bar*@
         <div class="container-fluid">
@@ -72,34 +76,33 @@
                 <div class="col-sm-4 col-md-3 sidebar">
 
                     @*Applicant Box*@
-                    <div class="applicantbox">
                             <div class="panel-body">
-                                <div class="row">
-                                    <div class="applicantpic" align="center"> <img alt="User Pic" src="~/img/ProfilePics/Avatar4.png" class="img-circle img-responsive"> </div>
-                                    <applicantname id="profile-name">Applicant <br />Name</applicantname>
+                                    <div class="applicantpic" align="center"> <img alt="User Pic" src="~/img/ProfilePics/Avatar4.png" class="img-circle img-responsive"> 
+                                    </div>
+                                    <applicantname id="profile-name"> <br /> </applicantname>
                                     <div class="applicantinfo">
                                         <br>
                                         <table class="table table-user-information">
                                             <tbody>
                                                 <tr>
                                                     <td>Title:</td>
-                                                    <td id="profile-title">Title here</td>
+                                                    <td id="profile-title"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Address:</td>
-                                                    <td id="profile-address">Strett, City, State Zip</td>
+                                                    <td id="profile-address"></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Email</td>
-                                                    <td><a id="profile-email" href="mailto:ericthibeau@gmail.com">Click to Email</a></td>
+                                                    <td><a id="profile-email" href="mailto:ericthibeau@gmail.com"></a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Phone Number</td>
-                                                    <td id="profile-phone">###-###-###<br>
+                                                    <td id="profile-phone"><br>
                                                 </tr>
                                                 <tr>
                                                     <td>Skills</td>
-                                                    <td id="profile-skills">My Skills</td>
+                                                    <td id="profile-skills"></td>
                                                 </tr>
                                         </table>
                                         <div class="row personalities">
@@ -124,8 +127,8 @@
                                                 <span class="Analytical" id="profile-analytical">0</span>
                                                 <p></p><p></p><p></p>
                                             </div>
-                                            <div class="downloadbutton">
-                                                <a href="test.txt" download>
+                                            <div class="thumbnail">
+                                                <a onclick="DownloadApplicantResume($('#profile-email').attr('name'))" download>
                                                     <img src="~/img/dlbutton.png" />
                                                 </a>
                                                 <div class="caption post-content">
@@ -134,12 +137,8 @@
                                             </div>
 
                                         </div>
-                               
                                        <p></p>
-                                      
                                     </div>
-                                </div>
-                            </div>
                         </div>
                 </div>
             </div>

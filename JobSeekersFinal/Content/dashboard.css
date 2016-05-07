@@ -75,27 +75,11 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 background-color: #d54b65;
 }
 
-tr:hover,tr.alt:hover
+tr:hover,tr.alt:hover, tr.clicked
 {
     background: rgb(221, 221, 221)!important;
 }
 
-
-/* applicant box */
-applicantbox {
-    position: fixed;
-
-}
-
-.sidebar {
-    position: absolute;
-    top: 51px;
-    right: 0px;
-    width: 40%;
-    padding: 20px;
-    background-color: gray;
-    height: 85%;
-}
 
 .table-user-information > tbody > tr {
    
@@ -124,10 +108,11 @@ applicantbox {
 }
 
 .applicantinfo {
-    position: absolute;
+    width: 80%;
+    display: inline-block;
+    position: relative;
     left: 0px;
     margin-left:50px;
-    width: 80%;
     margin-top: -200px;
 }
 
@@ -141,33 +126,53 @@ applicantname {
     text-align:center;
 }
 
+/* outer box  */
 
+.sidebar {
+    position: absolute;
+    top: 51px;
+    right: 0px;
+    width: 40%;
+    padding: 20px;
+    background-color: gray;
+    height: 85%;
+}
 
 /* inner box  */
 .panel-body {
     position: absolute;
-    left: 20px;
+    left: 30px;
     font-size: 20em;
     width: 90%;
     height: 90%;
     padding-left: 20px;
+    padding-right: 20px;
     background-color: #eee;
-}
-
-/* power / inspire / balance / analytical  */
-personality {
-    font-size: 5%;
-    font-weight:600;
-    text-align: center;
 
 }
+
+/* personality box  */
 
 .personalities {
   position: absolute;
   text-align: center;
-  width: 110%;
+  
   background-color:#eee;
+  margin-bottom: 20px;
+ 
 }
+
+/* power / inspire / balance / analytical  */
+personality {
+
+    font-size: 5%;
+    font-weight:600;
+    text-align: center;
+    margin-bottom: 20px;
+    bottom: 20px;
+}
+
+
 
 
 .col-xs-6, .col-sm-3 {
@@ -218,3 +223,9 @@ form {
     margin-bottom:30px;
 }
 
+.thumbnail {
+    margin-bottom: 40px;
+    text-align: center;
+    right:-100px;
+    display: inline-block;
+}

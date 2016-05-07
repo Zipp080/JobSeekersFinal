@@ -61,8 +61,7 @@
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>
-                                    <a href="~/Home/NewApplicantProfile.cshtml" class="button">Edit</a>
-
+                                    @Html.ActionLink("Edit", @"EditApplicantProfile", "Home", new { email = Model.Email}, null)
                                 </td>
                             </tr>
 
@@ -86,32 +85,26 @@
                                     </p>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>
-                                    <a href="~/Home/NewApplicantProfile.cshtml" class="button">Edit</a>
-
-                                </td>
-                            </tr>
                         </table>
                     </div>
                     <div class="myresume">
                         <br />
                         <br />
                         <br />
-                        <p style="font-family:'Arial'; font-size: 2em; font-weight: bold;">My resumé</p>
+                        <p style="font-family:'Arial'; font-size: 2em; font-weight: bold;">My resume</p>
                         <br />
-                        <button type="submit" onclick="window.open('resume.docx')"><p style="font-size:12px;">Download your resumé</p></button>
+                        <button type="submit" onclick="DownloadResume('@Model.Email')">Download your resume</button>
                         <br />
                         <br />
                         <form method="POST" action="uploadFile" enctype="multipart/form-data">
-                            <p class="text-left" style="font-size: 13px; font-weight: bold;">Upload a new resumé</p><input type="file" name="file" />
+                            <p class="text-left" style="font-size: 13px; font-weight: bold;">Upload a new resume</p><input id ="new_app_resume" type="file" name="file" />
+                            <input id="saveForm" class="button_text" type="button" name="submit" value="Submit!" onclick="UploadNewResume('@Model.Email')" />
                         </form>
                         <br />
                         <br />
+                        <button type="button" onclick="DeleteApplicant('@Model.Email')">Delete my Profile</button> 
                         <br />
                         <br />
-                        <button type="button" onclick="deletedata">Delete my Profile</button> 
                     </div>
                 </div>
                 <div class="col-xs-1"></div>
@@ -157,23 +150,17 @@
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">JobSeekers</a>
+            <div class="navbar-header" color="red">
+                <a class="navbar-brand" href="Dashboard?authType=1&email=@Model.Email">JobSeekers</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">My Profile</a></li>
-                    <li><a href="#">Help</a></li>
                     <li><a href="mailto:webmaster@jobseekers.com">Contact</a></li>
+                    <li><a href="Index">Logout</a></li>
                 </ul>
-
             </div>
         </div>
-
     </nav>
-
-
-
 
 </body>
 </html>

@@ -1,0 +1,12 @@
+.circle
+{
+  
+  width:100px;
+  height:100px;
+  border-radius:50px;
+  font-size:20px;color:#fff;line-height:100px;
+  text-align:center;}
+  
+.color-1 { background: #DD4814;}
+.color-2 { background: #AEA79F; }
+.color-3 { background: #5E2750; }

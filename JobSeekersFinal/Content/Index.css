@@ -24,12 +24,32 @@ h8{
 }
 
 
-.intro-header {
+.intro-header1 {
     padding-top: 10px; 
     padding-bottom: 10px;
     text-align: center;
     color: #f8f8f8;
     background: url(/img/business-plans.jpg) no-repeat center center;
+    background-size: cover;
+   
+}
+
+.intro-header2 {
+    padding-top: 10px; 
+    padding-bottom: 10px;
+    text-align: center;
+    color: black;
+    background: url(/img/business_steps.jpg) no-repeat center center;
+    background-size: cover;
+   
+}
+
+.intro-header3 {
+    padding-top: 10px; 
+    padding-bottom: 10px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(/img/home11.jpg) no-repeat center center;
     background-size: cover;
    
 }

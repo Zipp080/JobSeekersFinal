@@ -218,8 +218,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\employerHelp.css" />
+    <Content Include="Content\Howtopage.css" />
     <Content Include="Content\Layout.css" />
-    <Content Include="Content\Profile3.css" />
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\jquery.dataTables.min.css" />
@@ -237,6 +237,7 @@
     <Content Include="img\bottom.png" />
     <Content Include="img\business-plans.jpg" />
     <Content Include="img\Business_Incubation_Startup.jpg" />
+    <Content Include="img\business_steps.jpg" />
     <Content Include="img\circle-xxl.png" />
     <Content Include="img\Company Size.jpg" />
     <Content Include="img\company-culture.jpg" />
@@ -246,6 +247,8 @@
     <Content Include="img\Dressed-Up-Man2.jpg" />
     <Content Include="img\green.png" />
     <Content Include="img\hire-me-sign.jpg" />
+    <Content Include="img\home11.jpg" />
+    <Content Include="img\how.jpg" />
     <Content Include="img\Image7.jpg" />
     <Content Include="img\Job interview.jpg" />
     <Content Include="img\Job offer.jpg" />
@@ -254,7 +257,7 @@
     <Content Include="img\JobSeeker Logo-REd.png" />
     <Content Include="img\modern-office-designs-wjOd.jpg" />
     <Content Include="img\Office2.jpg" />
-    <Content Include="img\Personality_Test.jpg" />
+    <Content Include="img\Personality_Test_2.png" />
     <Content Include="img\powerful1.png" />
     <Content Include="img\ProfilePics\Avatar1.png" />
     <Content Include="img\ProfilePics\Avatar2.png" />
@@ -274,6 +277,8 @@
     <Content Include="img\Step3.png" />
     <Content Include="img\Subscription.PNG" />
     <Content Include="img\top.png" />
+    <Content Include="img\what.jpg" />
+    <Content Include="img\why.jpg" />
     <Content Include="img\Work_banner.jpg" />
     <Content Include="img\yellow.png" />
     <Content Include="img\yellow2.png" />
@@ -1060,11 +1065,11 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Home\ApplicationComplete.cshtml" />
+    <Content Include="Views\Home\EditApplicantProfile.cshtml" />
     <None Include="Views\Home\EmployerHelp.cshtml" />
-    <Content Include="Views\Home\HowDoesItWork.cshtml" />
     <Content Include="Views\Home\AccountLogin.cshtml" />
-    <Content Include="Views\Home\EmployerHelp2.cshtml" />
     <Content Include="Views\Home\ApplicantProfile.cshtml" />
+    <Content Include="Views\Home\HowDoesItWork.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
