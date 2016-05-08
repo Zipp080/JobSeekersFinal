@@ -211,11 +211,12 @@ namespace JobSeekersFinal.Controllers
         public ActionResult Personality1()
         {
             var jsonData = JsonConvert.DeserializeObject<Dictionary<string, object>>(Request.QueryString[0]);
-            var newApp = ApplicantData.GetApplicantData(jsonData["Email"].ToString());
+            string email = jsonData["Email"].ToString();
+            var newApp = ApplicantData.GetApplicantData(email);
 
             if (jsonData.ContainsKey("Resume"))
             {
-                jsonData["Resume"] = Path.Combine(_resumeStorageBase, Path.GetFileName(jsonData["Resume"].ToString()));
+                jsonData["Resume"] = Path.Combine(string.Format(_resumeStorageBase, email), Path.GetFileName(jsonData["Resume"].ToString()));
             }
             newApp.SetData(jsonData);
 
