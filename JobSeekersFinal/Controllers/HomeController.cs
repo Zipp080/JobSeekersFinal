@@ -86,7 +86,7 @@ namespace JobSeekersFinal.Controllers
 
         private enum ScoreCategory
         {
-            Power,
+            Power =1,
             Inspirational,
             Balance,
             Analytical
