@@ -99,7 +99,17 @@ function SendProfileData() {
         }
         xhr.send(fd);
 
-    }    
+    }
+    else {
+        $.ajax({
+            url: window.location.origin + "/Home/Personality1",
+            contentType: "application/json",
+            data: JSON.stringify(jsonData),
+            success: function (result) {
+                $("#form_container").html(result);
+            }
+        });
+    }
 }
 
 function DeleteApplicant(email) {
@@ -173,11 +183,11 @@ function SubmitQuizSection() {
     var answers = {
         email: window.emailInProgress,
         answerArray: [
-            $("[name='Q1']").val(),
-            $("[name='Q2']").val(),
-            $("[name='Q3']").val(),
-            $("[name='Q4']").val(),
-            $("[name='Q5']").val(),
+            $("input[name='Q1']:checked").val(),
+            $("input[name='Q2']:checked").val(),
+            $("input[name='Q3']:checked").val(),
+            $("input[name='Q4']:checked").val(),
+            $("input[name='Q5']:checked").val(),
             ]
     }
 
