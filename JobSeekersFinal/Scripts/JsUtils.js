@@ -99,7 +99,17 @@ function SendProfileData() {
         }
         xhr.send(fd);
 
-    }    
+    }
+    else {
+        $.ajax({
+            url: window.location.origin + "/Home/Personality1",
+            contentType: "application/json",
+            data: JSON.stringify(jsonData),
+            success: function (result) {
+                $("#form_container").html(result);
+            }
+        });
+    }
 }
 
 function DeleteApplicant(email) {
